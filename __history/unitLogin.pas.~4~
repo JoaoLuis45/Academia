@@ -1,0 +1,39 @@
+unit unitLogin;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.pngimage,
+  Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls, Vcl.Buttons, SWHDBEdit;
+
+type
+  TformLogin = class(TForm)
+    pnlMain: TPanel;
+    pnlLogo: TPanel;
+    logoLogin: TImage;
+    pnlDivision: TPanel;
+    pnlPrincipal: TPanel;
+    pnlGlyphGym: TPanel;
+    Image1: TImage;
+    pnlLogin: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    btnLogin: TSpeedButton;
+    SWHDBEdit1: TSWHDBEdit;
+    SWHDBEdit2: TSWHDBEdit;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  formLogin: TformLogin;
+
+implementation
+
+{$R *.dfm}
+
+end.

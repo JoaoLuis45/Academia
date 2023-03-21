@@ -1,0 +1,56 @@
+unit unitAddClients;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.StdCtrls,
+  Vcl.Imaging.pngimage, Vcl.ExtCtrls, SWHTEdit, Vcl.Mask, Vcl.DBCtrls, SWHDBEdit;
+
+type
+  TformAddClients = class(TForm)
+    pnlPrincipal: TPanel;
+    pnlTop: TPanel;
+    imgIconForm: TImage;
+    Label1: TLabel;
+    pnlDados: TPanel;
+    pnlBottom: TPanel;
+    Panel6: TPanel;
+    btnEditar: TSpeedButton;
+    Panel7: TPanel;
+    pnlNome: TPanel;
+    lblUser: TLabel;
+    txtNome: TSWHDBEdit;
+    pnlRua: TPanel;
+    Label2: TLabel;
+    txtRua: TSWHDBEdit;
+    procedure btnEditarMouseEnter(Sender: TObject);
+    procedure btnEditarMouseLeave(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  formAddClients: TformAddClients;
+
+implementation
+
+{$R *.dfm}
+
+procedure TformAddClients.btnEditarMouseEnter(Sender: TObject);
+begin
+  panel6.Color := $005BA6E5;
+  panel6.Font.Style := [TFontStyle.fsBold];
+  panel7.Visible := True;
+end;
+
+procedure TformAddClients.btnEditarMouseLeave(Sender: TObject);
+begin
+    panel6.Color := $00F2556E;
+    panel6.Font.Style := [];
+    panel7.Visible := False;
+end;
+
+end.

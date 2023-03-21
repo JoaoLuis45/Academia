@@ -1,0 +1,61 @@
+unit unitLogin;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.pngimage,
+  Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls, Vcl.Buttons, SWHDBEdit;
+
+type
+  TformLogin = class(TForm)
+    pnlMain: TPanel;
+    pnlLogo: TPanel;
+    logoLogin: TImage;
+    pnlDivision: TPanel;
+    pnlPrincipal: TPanel;
+    pnlGlyphGym: TPanel;
+    Image1: TImage;
+    pnlLogin: TPanel;
+    Label1: TLabel;
+    pnlButtonLogin: TPanel;
+    btnEntrar: TSpeedButton;
+    pnlBorderBottom: TPanel;
+    Panel1: TPanel;
+    Label2: TLabel;
+    SWHDBEdit1: TSWHDBEdit;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    Label3: TLabel;
+    SWHDBEdit2: TSWHDBEdit;
+    Panel4: TPanel;
+    procedure btnEntrarMouseEnter(Sender: TObject);
+    procedure btnEntrarMouseLeave(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  formLogin: TformLogin;
+
+implementation
+
+{$R *.dfm}
+
+procedure TformLogin.btnEntrarMouseEnter(Sender: TObject);
+begin
+  pnlButtonLogin.Color := clHighlight;
+  pnlButtonLogin.Font.Style := [TFontStyle.fsBold];
+  pnlBorderBottom.Visible := True;
+end;
+
+procedure TformLogin.btnEntrarMouseLeave(Sender: TObject);
+begin
+  pnlButtonLogin.Color := clTeal;
+  pnlButtonLogin.Font.Style := [];
+  pnlBorderBottom.Visible := False;
+end;
+
+end.

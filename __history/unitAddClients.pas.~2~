@@ -1,0 +1,187 @@
+unit unitAddClients;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.StdCtrls,
+  Vcl.Imaging.pngimage, Vcl.ExtCtrls, SWHTEdit, Vcl.Mask, Vcl.DBCtrls, SWHDBEdit;
+
+type
+  TformAddClients = class(TForm)
+    pnlPrincipal: TPanel;
+    pnlTop: TPanel;
+    imgIconForm: TImage;
+    Label1: TLabel;
+    pnlDados: TPanel;
+    pnlBottom: TPanel;
+    Panel6: TPanel;
+    btnEditar: TSpeedButton;
+    Panel7: TPanel;
+    pnlNome: TPanel;
+    lblUser: TLabel;
+    txtNome: TSWHDBEdit;
+    pnlBairro: TPanel;
+    Label2: TLabel;
+    txtBairro: TSWHDBEdit;
+    pnlNumero: TPanel;
+    Label3: TLabel;
+    txtNumCasa: TSWHDBEdit;
+    pnlRua: TPanel;
+    Label4: TLabel;
+    txtRua: TSWHDBEdit;
+    pnlIdade: TPanel;
+    Label5: TLabel;
+    txtIdade: TSWHDBEdit;
+    pnlTelefone: TPanel;
+    Label6: TLabel;
+    txtTelefone: TSWHDBEdit;
+    checkSaude: TDBCheckBox;
+    pnlSaude: TPanel;
+    Label7: TLabel;
+    txtProbSaude: TSWHDBEdit;
+    checkComec: TDBCheckBox;
+    pnlPersonais: TPanel;
+    btnPersonais: TSpeedButton;
+    Panel2: TPanel;
+    pnlFechar: TPanel;
+    btnFechar: TSpeedButton;
+    Panel3: TPanel;
+    txtDataPag: TSWHDBEdit;
+    procedure btnEditarMouseEnter(Sender: TObject);
+    procedure btnEditarMouseLeave(Sender: TObject);
+    procedure btnPersonaisMouseEnter(Sender: TObject);
+    procedure btnPersonaisMouseLeave(Sender: TObject);
+    procedure checkSaudeClick(Sender: TObject);
+    procedure checkComecClick(Sender: TObject);
+    procedure btnEditarClick(Sender: TObject);
+    procedure btnFecharMouseEnter(Sender: TObject);
+    procedure btnFecharMouseLeave(Sender: TObject);
+    procedure btnFecharClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  formAddClients: TformAddClients;
+
+implementation
+
+{$R *.dfm}
+
+uses UnitDM;
+
+procedure TformAddClients.btnEditarClick(Sender: TObject);
+begin
+  DM.sqlClientes.Post;
+  DM.sqlClientes.Refresh;
+  dm.sqlClientes.Insert;
+end;
+
+procedure TformAddClients.btnEditarMouseEnter(Sender: TObject);
+begin
+  panel6.Color := $005BA6E5;
+  panel6.Font.Style := [TFontStyle.fsBold];
+  panel7.Visible := True;
+end;
+
+procedure TformAddClients.btnEditarMouseLeave(Sender: TObject);
+begin
+    panel6.Color := $00F2556E;
+    panel6.Font.Style := [];
+    panel7.Visible := False;
+end;
+
+procedure TformAddClients.btnFecharClick(Sender: TObject);
+begin
+  DM.sqlClientes.Cancel;
+  formAddClients.Close;
+end;
+
+procedure TformAddClients.btnFecharMouseEnter(Sender: TObject);
+begin
+    pnlFechar.Color := $005BA6E5;
+    pnlFechar.Font.Style := [];
+    panel3.Visible := False;
+end;
+
+procedure TformAddClients.btnFecharMouseLeave(Sender: TObject);
+begin
+    pnlFechar.Color := $00F2556E;
+    pnlFechar.Font.Style := [];
+    panel3.Visible := False;
+end;
+
+procedure TformAddClients.btnPersonaisMouseEnter(Sender: TObject);
+begin
+    pnlPersonais.Color := $005BA6E5;
+    pnlPersonais.Font.Style := [];
+    panel2.Visible := False;
+end;
+
+procedure TformAddClients.btnPersonaisMouseLeave(Sender: TObject);
+begin
+    pnlPersonais.Color := $00F2556E;
+    pnlPersonais.Font.Style := [];
+    panel2.Visible := False;
+end;
+
+procedure TformAddClients.checkSaudeClick(Sender: TObject);
+begin
+  if checkSaude.Checked then begin
+    pnlSaude.Visible := True;
+  end else begin
+    pnlSaude.Visible := False;
+  end;
+end;
+
+
+procedure TformAddClients.checkComecClick(Sender: TObject);
+begin
+  if checkComec.Checked then begin
+    pnlPersonais.Visible := True;
+  end else begin
+    pnlPersonais.Visible := False;
+  end;
+
+
+end;
+
+
+procedure MakeRounded(Control: TWinControl);
+var
+R: TRect;
+Rgn: HRGN;
+begin
+with Control do
+begin
+ R := ClientRect;
+ rgn := CreateRoundRectRgn(R.Left, R.Top, R.Right, R.Bottom, 10, 10);
+ Perform(EM_GETRECT, 0, lParam(@r));
+ InflateRect(r, - 5, - 5);
+ Perform(EM_SETRECTNP, 0, lParam(@r));
+ SetWindowRgn(Handle, rgn, True);
+ Invalidate;
+end;
+end;
+
+
+procedure TformAddClients.FormShow(Sender: TObject);
+begin
+MakeRounded(pnlFechar);
+MakeRounded(panel6);
+MakeRounded(pnlBairro);
+MakeRounded(pnlIdade);
+MakeRounded(pnlNome);
+MakeRounded(pnlNumero);
+MakeRounded(pnlTelefone);
+MakeRounded(pnlPersonais);
+MakeRounded(pnlRua);
+MakeRounded(pnlSaude);
+txtDataPag := StrToDate(formatdatetime('dd\mm\yyyy', now));
+end;
+
+end.

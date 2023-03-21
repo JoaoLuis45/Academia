@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2023/03/16 16:10:51.000.521,=C:\Users\HASTJW\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>2023/03/16 16:13:40.000.035,C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\unitLogin.dfm=C:\Users\HASTJW\Documents\Embarcadero\Studio\Projects\Unit3.dfm</Transaction>
+    <Transaction>2023/03/16 16:13:40.000.035,C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\unitLogin.pas=C:\Users\HASTJW\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>2023/03/16 16:13:46.000.946,C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\ProjetoLogin.dproj=C:\Users\HASTJW\Documents\Embarcadero\Studio\Projects\Project2.dproj</Transaction>
+    <Transaction>2023/03/17 13:16:27.000.583,=C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\Unit1.pas</Transaction>
+    <Transaction>2023/03/17 13:32:03.000.938,=C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\Unit2.pas</Transaction>
+    <Transaction>2023/03/17 13:43:35.000.056,C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\UnitDM.dfm=C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\Unit1.dfm</Transaction>
+    <Transaction>2023/03/17 13:43:35.000.056,C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\UnitDM.pas=C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\Unit1.pas</Transaction>
+    <Transaction>2023/03/17 15:29:15.000.968,=C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\Unit1.pas</Transaction>
+    <Transaction>2023/03/17 15:38:26.000.703,C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\Unit1.pas=C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\unitHome.pas</Transaction>
+    <Transaction>2023/03/17 15:38:26.000.704,C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\Unit1.dfm=C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\unitHome.dfm</Transaction>
+    <Transaction>2023/03/18 09:55:27.000.714,=C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\Unit1.pas</Transaction>
+    <Transaction>2023/03/18 10:02:05.000.097,C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\Unit1.pas=C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\unitClientes.pas</Transaction>
+    <Transaction>2023/03/18 10:02:05.000.098,C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\Unit1.dfm=C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\unitClientes.dfm</Transaction>
+    <Transaction>2023/03/20 09:38:04.000.349,=C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\Unit1.pas</Transaction>
+    <Transaction>2023/03/20 09:38:38.000.058,C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\uFuncoes.pas=C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\Unit1.pas</Transaction>
+    <Transaction>2023/03/20 10:32:39.000.896,=C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\Unit1.pas</Transaction>
+    <Transaction>2023/03/20 11:11:07.000.774,C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\unitAddClients.pas=C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\Unit1.pas</Transaction>
+    <Transaction>2023/03/20 11:11:07.000.774,C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\unitAddClients.dfm=C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\Unit1.dfm</Transaction>
+    <Transaction>2023/03/20 14:44:29.000.717,=C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\Unit1.pas</Transaction>
+    <Transaction>2023/03/20 14:53:34.000.550,C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\Unit1.pas=C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\unitPersonais.pas</Transaction>
+    <Transaction>2023/03/20 14:53:34.000.552,C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\Unit1.dfm=C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\unitPersonais.dfm</Transaction>
+    <Transaction>2023/03/20 15:21:00.000.450,=C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\Unit1.pas</Transaction>
+    <Transaction>2023/03/20 15:33:25.000.797,C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\unitaddPersonais.pas=C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\Unit1.pas</Transaction>
+    <Transaction>2023/03/20 15:33:25.000.797,C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\unitaddPersonais.dfm=C:\Users\HASTJW\Desktop\joao luis\projects delphi\Projeto login\Unit1.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

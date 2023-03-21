@@ -1,0 +1,94 @@
+unit unitLogin;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.pngimage,
+  Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls, Vcl.Buttons, SWHDBEdit;
+
+type
+  TformLogin = class(TForm)
+    pnlMain: TPanel;
+    pnlLogo: TPanel;
+    logoLogin: TImage;
+    pnlDivision: TPanel;
+    pnlPrincipal: TPanel;
+    pnlGlyphGym: TPanel;
+    Image1: TImage;
+    pnlLogin: TPanel;
+    lblWelcome: TLabel;
+    pnlButtonLogin: TPanel;
+    btnEntrar: TSpeedButton;
+    pnlBorderBottom: TPanel;
+    pnlDataUser: TPanel;
+    lblUser: TLabel;
+    txtUser: TSWHDBEdit;
+    pnlBorderBottomUser: TPanel;
+    pnlDataPassword: TPanel;
+    lblPassword: TLabel;
+    txtPassword: TSWHDBEdit;
+    pnlBorderBottomPassword: TPanel;
+    procedure btnEntrarMouseEnter(Sender: TObject);
+    procedure btnEntrarMouseLeave(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure btnEntrarClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  formLogin: TformLogin;
+
+implementation
+
+{$R *.dfm}
+
+uses Unit1, UnitDM;
+
+procedure MakeRounded(Control: TWinControl);
+var
+R: TRect;
+Rgn: HRGN;
+begin
+with Control do
+begin
+ R := ClientRect;
+ rgn := CreateRoundRectRgn(R.Left, R.Top, R.Right, R.Bottom, 10, 10);
+ Perform(EM_GETRECT, 0, lParam(@r));
+ InflateRect(r, - 5, - 5);
+ Perform(EM_SETRECTNP, 0, lParam(@r));
+ SetWindowRgn(Handle, rgn, True);
+ Invalidate;
+end;
+end;
+
+procedure TformLogin.btnEntrarClick(Sender: TObject);
+begin
+  DataModule1.sqlLogin
+end;
+
+procedure TformLogin.btnEntrarMouseEnter(Sender: TObject);
+begin
+  pnlButtonLogin.Color := clHighlight;
+  pnlButtonLogin.Font.Style := [TFontStyle.fsBold];
+  pnlBorderBottom.Visible := True;
+end;
+
+procedure TformLogin.btnEntrarMouseLeave(Sender: TObject);
+begin
+  pnlButtonLogin.Color := clTeal;
+  pnlButtonLogin.Font.Style := [];
+  pnlBorderBottom.Visible := False;
+end;
+
+procedure TformLogin.FormCreate(Sender: TObject);
+begin
+MakeRounded(txtPassword);
+MakeRounded(txtUser);
+MakeRounded(pnlButtonLogin);
+end;
+
+end.

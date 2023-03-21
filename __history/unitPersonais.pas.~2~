@@ -1,0 +1,51 @@
+unit unitPersonais;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids, Vcl.DBGrids,
+  Vcl.Buttons, Vcl.StdCtrls, Vcl.Imaging.pngimage, Vcl.ExtCtrls;
+
+type
+  TformPersonais = class(TForm)
+    pnlPrincipal: TPanel;
+    pnlTop: TPanel;
+    imgIconForm: TImage;
+    Label1: TLabel;
+    pnlButtons: TPanel;
+    panel1: TPanel;
+    btnPayment: TSpeedButton;
+    pnlborder1: TPanel;
+    Panel2: TPanel;
+    btnRemoveClient: TSpeedButton;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    btnAddClient: TSpeedButton;
+    Panel5: TPanel;
+    pnlGrid: TPanel;
+    gridClients: TDBGrid;
+    pnlBottom: TPanel;
+    lblSave: TLabel;
+    Panel6: TPanel;
+    btnSalvar: TSpeedButton;
+    Panel7: TPanel;
+    Panel8: TPanel;
+    btnEditar: TSpeedButton;
+    Panel9: TPanel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  formPersonais: TformPersonais;
+
+implementation
+
+{$R *.dfm}
+
+uses uFuncoes, unitAddClients, unitClientes, UnitDM, unitHome, unitLogin;
+
+end.

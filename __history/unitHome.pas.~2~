@@ -1,0 +1,81 @@
+unit unitHome;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Buttons,
+  Vcl.Imaging.pngimage;
+
+type
+  TformHome = class(TForm)
+    formMain: TPanel;
+    pnlHeader: TPanel;
+    pnlBorderTop: TPanel;
+    Image1: TImage;
+    pnlClose: TPanel;
+    btnClose: TSpeedButton;
+    pnlMinimize: TPanel;
+    btnMinimize: TSpeedButton;
+    pnlMenu: TPanel;
+    sla: TPanel;
+    pnlBorderBottomsla: TPanel;
+    btnsla: TSpeedButton;
+    Panel1: TPanel;
+    SpeedButton1: TSpeedButton;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    SpeedButton2: TSpeedButton;
+    Panel4: TPanel;
+    Panel5: TPanel;
+    SpeedButton3: TSpeedButton;
+    Panel6: TPanel;
+    Panel7: TPanel;
+    SpeedButton4: TSpeedButton;
+    Panel8: TPanel;
+    Panel9: TPanel;
+    SpeedButton5: TSpeedButton;
+    Panel10: TPanel;
+    Panel11: TPanel;
+    SpeedButton6: TSpeedButton;
+    Panel12: TPanel;
+    procedure btnCloseClick(Sender: TObject);
+    procedure btnMinimizeClick(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  formHome: TformHome;
+
+implementation
+
+{$R *.dfm}
+
+procedure TformHome.btnCloseClick(Sender: TObject);
+begin
+  Application.Terminate;
+end;
+
+procedure TformHome.btnMinimizeClick(Sender: TObject);
+begin
+  Application.Minimize;
+end;
+
+procedure TformHome.SpeedButton1Click(Sender: TObject);
+var
+  i: integer;
+begin
+  if pnlMenu.Width = 40 then
+  begin
+    pnlMenu.Width := 160;
+  end else
+  begin
+    pnlMenu.Width := 40;
+  end;
+
+end;
+end.

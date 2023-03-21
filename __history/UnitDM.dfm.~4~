@@ -1,0 +1,34 @@
+object DM: TDM
+  Height = 480
+  Width = 640
+  object conexao: TFDConnection
+    Params.Strings = (
+      'Database=academia'
+      'User_Name=admin'
+      'Password=joaobr12'
+      'Server=academia.cfydoor5czhr.us-east-1.rds.amazonaws.com'
+      'DriverID=MySQL')
+    Connected = True
+    LoginPrompt = False
+    Left = 40
+    Top = 32
+  end
+  object sqlLogin: TFDQuery
+    Connection = conexao
+    Left = 40
+    Top = 96
+  end
+  object sqlClientes: TFDQuery
+    Active = True
+    Connection = conexao
+    SQL.Strings = (
+      'SELECT * FROM clientes')
+    Left = 48
+    Top = 256
+  end
+  object dsClientes: TDataSource
+    DataSet = sqlClientes
+    Left = 48
+    Top = 312
+  end
+end

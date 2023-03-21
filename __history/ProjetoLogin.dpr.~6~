@@ -1,0 +1,18 @@
+program ProjetoLogin;
+
+uses
+  Vcl.Forms,
+  unitLogin in 'unitLogin.pas' {formLogin},
+  UnitDM in 'UnitDM.pas' {DM: TDataModule},
+  unitHome in 'unitHome.pas' {formHome};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TformLogin, formLogin);
+  Application.CreateForm(TDM, DM);
+  Application.CreateForm(TformHome, formHome);
+  Application.Run;
+end.
