@@ -1,0 +1,289 @@
+unit unitPagFunc;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids, Vcl.DBGrids,
+  Vcl.Buttons, Vcl.StdCtrls, Vcl.Imaging.pngimage, Vcl.ExtCtrls;
+
+type
+  TDBGridPadrao = class(TDBGrid);
+  TformPagFunc = class(TForm)
+    pnlPrincipal: TPanel;
+    pnlTop: TPanel;
+    imgIconForm: TImage;
+    Label1: TLabel;
+    pnlButtons: TPanel;
+    Panel2: TPanel;
+    btnExcluirPagamento: TSpeedButton;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    btnReceberPagamento: TSpeedButton;
+    Panel5: TPanel;
+    pnlGrid: TPanel;
+    gridPagFunc: TDBGrid;
+    pnlBottom: TPanel;
+    lblSave: TLabel;
+    Panel6: TPanel;
+    btnSalvar: TSpeedButton;
+    Panel7: TPanel;
+    Panel8: TPanel;
+    btnEditar: TSpeedButton;
+    Panel9: TPanel;
+    Panel10: TPanel;
+    btnCancelar: TSpeedButton;
+    Panel11: TPanel;
+    Panel12: TPanel;
+    btnVoltar: TSpeedButton;
+    Panel13: TPanel;
+    procedure FormCreate(Sender: TObject);
+    procedure FormResize(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure gridPagFuncDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure btnReceberPagamentoMouseEnter(Sender: TObject);
+    procedure btnReceberPagamentoMouseLeave(Sender: TObject);
+    procedure btnExcluirPagamentoMouseEnter(Sender: TObject);
+    procedure btnExcluirPagamentoMouseLeave(Sender: TObject);
+    procedure btnEditarMouseEnter(Sender: TObject);
+    procedure btnEditarMouseLeave(Sender: TObject);
+    procedure btnSalvarClick(Sender: TObject);
+    procedure btnSalvarMouseEnter(Sender: TObject);
+    procedure btnSalvarMouseLeave(Sender: TObject);
+    procedure btnExcluirPagamentoClick(Sender: TObject);
+    procedure btnEditarClick(Sender: TObject);
+    procedure btnReceberPagamentoClick(Sender: TObject);
+    procedure btnCancelarMouseEnter(Sender: TObject);
+    procedure btnCancelarMouseLeave(Sender: TObject);
+    procedure btnCancelarClick(Sender: TObject);
+    procedure btnVoltarMouseEnter(Sender: TObject);
+    procedure btnVoltarMouseLeave(Sender: TObject);
+    procedure btnVoltarClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  formPagFunc: TformPagFunc;
+
+implementation
+
+{$R *.dfm}
+
+uses uFuncoes, unitAddClients, unitaddPersonais, unitClientes, UnitDM, unitHome,
+  unitLogin, unitPagamentos, unitPersonais, unitReceberPagamentos, unitRealPag;
+
+procedure MakeRounded(Control: TWinControl);
+var
+R: TRect;
+Rgn: HRGN;
+begin
+with Control do
+begin
+ R := ClientRect;
+ rgn := CreateRoundRectRgn(R.Left, R.Top, R.Right, R.Bottom, 10, 10);
+ Perform(EM_GETRECT, 0, lParam(@r));
+ InflateRect(r, - 5, - 5);
+ Perform(EM_SETRECTNP, 0, lParam(@r));
+ SetWindowRgn(Handle, rgn, True);
+ Invalidate;
+end;
+end;
+
+procedure TformPagFunc.btnCancelarClick(Sender: TObject);
+begin
+      DM.sqlPagFunc.Refresh;
+      formPagFunc.Close;
+      formPagFunc:= TformPagFunc.Create(self);
+      formPagFunc.Parent := formHome.pnlForms;
+      formPagFunc.Align := alClient;
+      formPagFunc.BorderStyle := bsNone;
+      formPagFunc.Show;
+end;
+
+procedure TformPagFunc.btnCancelarMouseEnter(Sender: TObject);
+begin
+AoEntrar(panel10,panel11)
+end;
+
+procedure TformPagFunc.btnCancelarMouseLeave(Sender: TObject);
+begin
+AoSair(panel10,panel11)
+end;
+
+procedure TformPagFunc.btnEditarClick(Sender: TObject);
+begin
+  if DM.sqlPagamentos.IsEmpty then begin
+    ShowMessage('A tabela está vazia!');
+  end else begin
+    DM.sqlPagFunc.Close;
+    DM.sqlPagFunc.Open();
+    gridPagFunc.Options := [dgEditing,dgTitles,dgColumnResize,dgColLines,dgTabs,dgAlwaysShowSelection,dgConfirmDelete,dgCancelOnExit,dgTitleClick,dgTitleHotTrack];
+    DM.sqlClientes.Edit;
+    panel6.visible := True;
+    panel8.visible := False;
+    panel10.Visible := True;
+    TDBGridPadrao(gridPagFunc).DefaultRowHeight := 30;
+    TDBGridPadrao(gridPagFunc).ClientHeight := (30 * TDBGridPadrao(gridPagFunc).RowCount + 30);
+  end;
+end;
+
+procedure TformPagFunc.btnEditarMouseEnter(Sender: TObject);
+begin
+AoEntrar(panel8,panel9)
+end;
+
+procedure TformPagFunc.btnEditarMouseLeave(Sender: TObject);
+begin
+AoSair(panel8,panel9)
+end;
+
+procedure TformPagFunc.btnExcluirPagamentoClick(Sender: TObject);
+begin
+  if DM.sqlPagFunc.IsEmpty then begin
+    ShowMessage('A tabela já está vazia!');
+  end else
+  if Application.MessageBox('Deseja realmente Excluir esse Pagamento?','Atenção',MB_ICONEXCLAMATION+MB_OKCANCEL) = mrOk then begin
+    DM.sqlPagFunc.Delete;
+  end;
+end;
+
+procedure TformPagFunc.btnExcluirPagamentoMouseEnter(Sender: TObject);
+begin
+AoEntrarVermelho(panel2,panel3)
+end;
+
+procedure TformPagFunc.btnExcluirPagamentoMouseLeave(Sender: TObject);
+begin
+AoSairVermelho(panel2,panel3)
+end;
+
+procedure TformPagFunc.btnReceberPagamentoClick(Sender: TObject);
+begin
+    formRealPag:= TformRealPag.Create(self);
+    formRealPag.Parent := formHome.pnlForms;
+    formRealPag.Align := alClient;
+    formRealPag.BorderStyle := bsNone;
+    formRealPag.Show;
+end;
+
+procedure TformPagFunc.btnReceberPagamentoMouseEnter(Sender: TObject);
+begin
+AoEntrarVerde(panel4,panel5)
+end;
+
+procedure TformPagFunc.btnReceberPagamentoMouseLeave(Sender: TObject);
+begin
+AoSairVerde(panel4,panel5)
+end;
+
+procedure TformPagFunc.btnSalvarClick(Sender: TObject);
+begin
+  if DM.sqlPagFunc.State in [dsBrowse] then begin
+    ShowMessage('Edite algo primeiro para poder salvar!');
+  end else begin
+    panel6.visible := False;
+    panel8.visible := True;
+    try
+      DM.sqlPagFunc.Post;
+      DM.sqlPagFunc.Refresh;
+      formPagFunc.Close;
+      formPagFunc:= TformPagFunc.Create(self);
+      formPagFunc.Parent := formHome.pnlForms;
+      formPagFunc.Align := alClient;
+      formPagFunc.BorderStyle := bsNone;
+      formPagFunc.Show;
+    except
+      on E:Exception do
+      ShowMessage('Preencha os campos que deseja editar corretamente!')
+    end;
+  end;
+
+end;
+
+procedure TformPagFunc.btnSalvarMouseEnter(Sender: TObject);
+begin
+AoEntrar(panel6,panel7)
+end;
+
+procedure TformPagFunc.btnSalvarMouseLeave(Sender: TObject);
+begin
+AoSair(panel6,panel7)
+end;
+
+procedure TformPagFunc.btnVoltarClick(Sender: TObject);
+begin
+formPagFunc.Close;
+end;
+
+procedure TformPagFunc.btnVoltarMouseEnter(Sender: TObject);
+begin
+AoEntrar(panel12,panel13)
+end;
+
+procedure TformPagFunc.btnVoltarMouseLeave(Sender: TObject);
+begin
+AoSair(panel12,panel13)
+end;
+
+procedure TformPagFunc.FormCreate(Sender: TObject);
+var
+    I: Integer;
+begin
+    For I := 0 to gridPagFunc.FieldCount - 1 do
+        gridPagFunc.Fields[i].Tag := 30;
+    AutoSizeDBGrid(gridPagFunc);
+end;
+
+procedure TformPagFunc.FormResize(Sender: TObject);
+begin
+  AutoSizeDBGrid(gridPagFunc);
+  // aumentando a altura das linhas da dbgrid
+  TDBGridPadrao(gridPagFunc).DefaultRowHeight := 30;
+  TDBGridPadrao(gridPagFunc).ClientHeight := (30 * TDBGridPadrao(gridPagFunc).RowCount + 30);
+end;
+
+procedure TformPagFunc.FormShow(Sender: TObject);
+begin
+  MakeRounded(panel2);
+  MakeRounded(panel4);
+  MakeRounded(panel8);
+  MakeRounded(panel6);
+  MakeRounded(panel10);
+  MakeRounded(panel12);
+  // aumentando a altura das linhas da dbgrid
+  TDBGridPadrao(gridPagFunc).DefaultRowHeight := 30;
+  TDBGridPadrao(gridPagFunc).ClientHeight := (30 * TDBGridPadrao(gridPagFunc).RowCount + 30);
+
+
+end;
+
+procedure TformPagFunc.gridPagFuncDrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+begin
+  //zebrando a dbgrid
+  if Odd(gridPagFunc.DataSource.DataSet.RecNo) then begin
+    gridPagFunc.Canvas.Brush.Color := $00E9E9E9;
+  end else
+    gridPagFunc.Canvas.Brush.Color := clWhite;
+
+  //mudando a cor da seleção
+  if (gdSelected in State) then
+    begin
+      gridPagFunc.Canvas.Brush.Color := $005BA6E5;
+      gridPagFunc.Canvas.Font.Color := clWhite;
+      gridPagFunc.Canvas.Font.Style := [TFontStyle.fsBold];
+    end;
+
+    gridPagFunc.Canvas.FillRect(rect);
+    gridPagFunc.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+
+  //mudando a posição e alinhamento vertical do texto de cadalinha
+  gridPagFunc.Canvas.TextRect(Rect, rect.Left + 8, rect.Top + 8, Column.Field.DisplayText);
+end;
+
+
+end.

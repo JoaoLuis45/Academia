@@ -1,0 +1,410 @@
+object formAddPersonal: TformAddPersonal
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'formAddPersonal'
+  ClientHeight = 690
+  ClientWidth = 776
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  TextHeight = 15
+  object pnlPrincipal: TPanel
+    Left = 0
+    Top = 0
+    Width = 776
+    Height = 690
+    Align = alClient
+    BevelOuter = bvNone
+    Color = 14077653
+    ParentBackground = False
+    TabOrder = 0
+    ExplicitWidth = 772
+    ExplicitHeight = 689
+    object pnlTop: TPanel
+      Left = 0
+      Top = 0
+      Width = 776
+      Height = 57
+      Align = alTop
+      BevelOuter = bvNone
+      TabOrder = 0
+      ExplicitWidth = 772
+      object imgIconForm: TImage
+        Left = 0
+        Top = 0
+        Width = 65
+        Height = 57
+        Align = alLeft
+        Center = True
+        Picture.Data = {
+          0954506E67496D61676589504E470D0A1A0A0000000D49484452000000280000
+          00160806000000B28EDEB0000000097048597300000B1300000B1301009A9C18
+          000000017352474200AECE1CE90000000467414D410000B18F0BFC6105000000
+          864944415478DAED97610AC0200846F526DBFD0FB56EB2F5D3B99AE6221DF841
+          3F2A7A3D90C010DE73D4B1B1B552C70EB60CF350009EC673D3785A41ECCCAD82
+          6A1EDF68956085204D015272EC003C056F7C54025695F8C14FC1148C20D87A49
+          12E06BD4FC5F08D2842C710AA66044419E30CD42F8764B0B746B587BC0D173D3
+          78D245EE9FA60B3AB86C1535B5C6FA0000000049454E44AE426082}
+      end
+      object Label1: TLabel
+        AlignWithMargins = True
+        Left = 68
+        Top = 20
+        Width = 166
+        Height = 34
+        Margins.Top = 20
+        Align = alLeft
+        Caption = 'Cadastrar Personal'
+        Color = clBlack
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 5395028
+        Font.Height = -19
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+        ExplicitHeight = 25
+      end
+    end
+    object pnlDados: TPanel
+      Left = 0
+      Top = 57
+      Width = 776
+      Height = 546
+      Align = alClient
+      BevelOuter = bvNone
+      TabOrder = 1
+      ExplicitWidth = 772
+      ExplicitHeight = 545
+      object Image1: TImage
+        Left = 160
+        Top = 149
+        Width = 370
+        Height = 324
+      end
+      object Label2: TLabel
+        Left = 31
+        Top = 149
+        Width = 107
+        Height = 17
+        Margins.Left = 10
+        Caption = 'Escolha uma foto'
+        Color = 13948116
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 9737364
+        Font.Height = -13
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object pnlNome: TPanel
+        Left = 30
+        Top = 24
+        Width = 500
+        Height = 40
+        Margins.Left = 15
+        Margins.Top = 15
+        Margins.Right = 15
+        Margins.Bottom = 15
+        BevelOuter = bvNone
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+        object lblUser: TLabel
+          Left = 0
+          Top = 0
+          Width = 500
+          Height = 17
+          Margins.Left = 10
+          Align = alTop
+          Caption = 'Nome'
+          Color = 13948116
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 9737364
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+          ExplicitWidth = 37
+        end
+        object txtNome: TSWHDBEdit
+          Left = 0
+          Top = 17
+          Width = 500
+          Height = 23
+          Align = alClient
+          BorderStyle = bsNone
+          DataField = 'nome'
+          DataSource = DM.dsPersonais
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+          MudarColor = 6006501
+        end
+      end
+      object pnlIdade: TPanel
+        Left = 30
+        Top = 84
+        Width = 200
+        Height = 40
+        BevelOuter = bvNone
+        TabOrder = 1
+        object Label5: TLabel
+          Left = 0
+          Top = 0
+          Width = 200
+          Height = 17
+          Margins.Left = 10
+          Align = alTop
+          Caption = 'Idade'
+          Color = 13948116
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 9737364
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+          ExplicitWidth = 34
+        end
+        object txtIdade: TSWHDBEdit
+          Left = 0
+          Top = 17
+          Width = 200
+          Height = 23
+          Align = alClient
+          BorderStyle = bsNone
+          DataField = 'idade'
+          DataSource = DM.dsPersonais
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+          MudarColor = 6006501
+        end
+      end
+      object pnlTelefone: TPanel
+        Left = 330
+        Top = 84
+        Width = 200
+        Height = 40
+        BevelOuter = bvNone
+        TabOrder = 2
+        object Label6: TLabel
+          Left = 0
+          Top = 0
+          Width = 200
+          Height = 17
+          Margins.Left = 10
+          Align = alTop
+          Caption = 'Telefone'
+          Color = 13948116
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 9737364
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+          ExplicitWidth = 53
+        end
+        object txtTelefone: TSWHDBEdit
+          Left = 0
+          Top = 17
+          Width = 200
+          Height = 23
+          Align = alClient
+          BorderStyle = bsNone
+          DataField = 'telefone'
+          DataSource = DM.dsPersonais
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+          MudarColor = 6006501
+        end
+      end
+      object pnlEscolherImg: TPanel
+        AlignWithMargins = True
+        Left = 30
+        Top = 191
+        Width = 108
+        Height = 34
+        Margins.Left = 50
+        Margins.Right = 10
+        Margins.Bottom = 50
+        BevelOuter = bvNone
+        Color = 15881582
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentBackground = False
+        ParentFont = False
+        TabOrder = 3
+        object btnEscolherImg: TSpeedButton
+          Left = 0
+          Top = 0
+          Width = 108
+          Height = 31
+          Align = alClient
+          Caption = 'Escolher'
+          Flat = True
+          OnClick = btnEscolherImgClick
+          OnMouseEnter = btnEscolherImgMouseEnter
+          OnMouseLeave = btnEscolherImgMouseLeave
+          ExplicitLeft = 112
+          ExplicitTop = -1
+          ExplicitWidth = 200
+          ExplicitHeight = 71
+        end
+        object Panel2: TPanel
+          Left = 0
+          Top = 31
+          Width = 108
+          Height = 3
+          Align = alBottom
+          BevelOuter = bvNone
+          Color = clWhite
+          ParentBackground = False
+          TabOrder = 0
+          Visible = False
+        end
+      end
+    end
+    object pnlBottom: TPanel
+      Left = 0
+      Top = 603
+      Width = 776
+      Height = 87
+      Align = alBottom
+      BevelOuter = bvNone
+      TabOrder = 2
+      ExplicitTop = 602
+      ExplicitWidth = 772
+      object Panel6: TPanel
+        AlignWithMargins = True
+        Left = 556
+        Top = 3
+        Width = 150
+        Height = 34
+        Margins.Left = 50
+        Margins.Right = 70
+        Margins.Bottom = 50
+        Align = alRight
+        BevelOuter = bvNone
+        Color = 15881582
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentBackground = False
+        ParentFont = False
+        TabOrder = 0
+        ExplicitLeft = 552
+        object btnEditar: TSpeedButton
+          Left = 0
+          Top = 0
+          Width = 150
+          Height = 31
+          Align = alClient
+          Caption = 'Adicionar Personal'
+          Flat = True
+          OnClick = btnEditarClick
+          OnMouseEnter = btnEditarMouseEnter
+          OnMouseLeave = btnEditarMouseLeave
+          ExplicitWidth = 200
+          ExplicitHeight = 71
+        end
+        object Panel7: TPanel
+          Left = 0
+          Top = 31
+          Width = 150
+          Height = 3
+          Align = alBottom
+          BevelOuter = bvNone
+          Color = clWhite
+          ParentBackground = False
+          TabOrder = 0
+          Visible = False
+        end
+      end
+      object pnlFechar: TPanel
+        AlignWithMargins = True
+        Left = 346
+        Top = 3
+        Width = 150
+        Height = 34
+        Margins.Left = 50
+        Margins.Right = 10
+        Margins.Bottom = 50
+        Align = alRight
+        BevelOuter = bvNone
+        Color = 15881582
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentBackground = False
+        ParentFont = False
+        TabOrder = 1
+        ExplicitLeft = 342
+        object btnFechar: TSpeedButton
+          Left = 0
+          Top = 0
+          Width = 150
+          Height = 31
+          Align = alClient
+          Caption = 'Fechar'
+          Flat = True
+          OnClick = btnFecharClick
+          OnMouseEnter = btnFecharMouseEnter
+          OnMouseLeave = btnFecharMouseLeave
+          ExplicitWidth = 200
+          ExplicitHeight = 71
+        end
+        object Panel3: TPanel
+          Left = 0
+          Top = 31
+          Width = 150
+          Height = 3
+          Align = alBottom
+          BevelOuter = bvNone
+          Color = clWhite
+          ParentBackground = False
+          TabOrder = 0
+          Visible = False
+        end
+      end
+    end
+  end
+  object OpenPictureDialog1: TOpenPictureDialog
+    DefaultExt = 'jpg'
+    Left = 696
+    Top = 241
+  end
+end

@@ -4,7 +4,7 @@ object formPersonais: TformPersonais
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Personais'
-  ClientHeight = 615
+  ClientHeight = 616
   ClientWidth = 1126
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -19,14 +19,14 @@ object formPersonais: TformPersonais
     Left = 0
     Top = 0
     Width = 1126
-    Height = 615
+    Height = 616
     Align = alClient
     BevelOuter = bvNone
     Color = 14077653
     ParentBackground = False
     TabOrder = 0
     ExplicitWidth = 1122
-    ExplicitHeight = 614
+    ExplicitHeight = 615
     object pnlTop: TPanel
       Left = 0
       Top = 0
@@ -109,6 +109,7 @@ object formPersonais: TformPersonais
           Align = alClient
           Caption = 'Pagamentos Realizados'
           Flat = True
+          OnClick = btnPaymentClick
           OnMouseEnter = btnPaymentMouseEnter
           OnMouseLeave = btnPaymentMouseLeave
           ExplicitHeight = 71
@@ -223,18 +224,18 @@ object formPersonais: TformPersonais
       Left = 0
       Top = 131
       Width = 1126
-      Height = 434
+      Height = 435
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 2
       ExplicitWidth = 1122
-      ExplicitHeight = 433
+      ExplicitHeight = 434
       object imgPersonal: TImage
         AlignWithMargins = True
         Left = 283
         Top = 3
         Width = 441
-        Height = 428
+        Height = 429
         Margins.Left = 50
         Align = alLeft
         Center = True
@@ -245,7 +246,7 @@ object formPersonais: TformPersonais
         Left = 20
         Top = 3
         Width = 210
-        Height = 428
+        Height = 429
         Margins.Left = 20
         Align = alLeft
         BiDiMode = bdLeftToRight
@@ -283,14 +284,14 @@ object formPersonais: TformPersonais
         Left = 757
         Top = 50
         Width = 289
-        Height = 381
+        Height = 382
         Margins.Left = 30
         Margins.Top = 50
         Align = alLeft
         BevelOuter = bvNone
         BorderStyle = bsSingle
         TabOrder = 1
-        ExplicitHeight = 380
+        ExplicitHeight = 381
         object Label5: TLabel
           Left = 28
           Top = 24
@@ -419,17 +420,17 @@ object formPersonais: TformPersonais
     end
     object pnlBottom: TPanel
       Left = 0
-      Top = 565
+      Top = 566
       Width = 1126
       Height = 50
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 3
-      ExplicitTop = 564
+      ExplicitTop = 565
       ExplicitWidth = 1122
       object lblSave: TLabel
         AlignWithMargins = True
-        Left = 10
+        Left = 183
         Top = 20
         Width = 4
         Height = 27
@@ -480,6 +481,51 @@ object formPersonais: TformPersonais
           ExplicitHeight = 71
         end
         object Panel9: TPanel
+          Left = 0
+          Top = 41
+          Width = 150
+          Height = 3
+          Align = alBottom
+          BevelOuter = bvNone
+          Color = clWhite
+          ParentBackground = False
+          TabOrder = 0
+          Visible = False
+        end
+      end
+      object Panel12: TPanel
+        AlignWithMargins = True
+        Left = 20
+        Top = 3
+        Width = 150
+        Height = 44
+        Margins.Left = 20
+        Align = alLeft
+        BevelOuter = bvNone
+        Color = 15881582
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentBackground = False
+        ParentFont = False
+        TabOrder = 1
+        object btnVoltar: TSpeedButton
+          Left = 0
+          Top = 0
+          Width = 150
+          Height = 41
+          Align = alClient
+          Caption = 'Voltar'
+          Flat = True
+          OnClick = btnVoltarClick
+          OnMouseEnter = btnVoltarMouseEnter
+          OnMouseLeave = btnVoltarMouseLeave
+          ExplicitWidth = 200
+          ExplicitHeight = 71
+        end
+        object Panel13: TPanel
           Left = 0
           Top = 41
           Width = 150

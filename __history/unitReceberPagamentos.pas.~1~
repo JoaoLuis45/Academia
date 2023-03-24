@@ -1,0 +1,39 @@
+unit unitReceberPagamentos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.StdCtrls,
+  Vcl.Imaging.pngimage, Vcl.ExtCtrls;
+
+type
+  TformReceberPagamento = class(TForm)
+    pnlPrincipal: TPanel;
+    pnlTop: TPanel;
+    imgIconForm: TImage;
+    Label1: TLabel;
+    pnlButtons: TPanel;
+    Panel2: TPanel;
+    btnCartao: TSpeedButton;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    btnPix: TSpeedButton;
+    Panel5: TPanel;
+    Panel1: TPanel;
+    btnDinheiro: TSpeedButton;
+    Panel6: TPanel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  formReceberPagamento: TformReceberPagamento;
+
+implementation
+
+{$R *.dfm}
+
+end.

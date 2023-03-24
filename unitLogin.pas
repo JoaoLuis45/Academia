@@ -30,6 +30,8 @@ type
     pnlBorderBottomPassword: TPanel;
     txtUser: TEdit1;
     txtPassword: TEdit1;
+    pnlBorderTop: TPanel;
+    logoDev: TImage;
     procedure btnEntrarMouseEnter(Sender: TObject);
     procedure btnEntrarMouseLeave(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -50,7 +52,7 @@ implementation
 
 {$R *.dfm}
 
-uses UnitDM;
+uses UnitDM, uFuncoes;
 
 procedure MakeRounded(Control: TWinControl);
 var
@@ -76,16 +78,12 @@ end;
 
 procedure TformLogin.btnEntrarMouseEnter(Sender: TObject);
 begin
-  pnlButtonLogin.Color := $005BA6E5;
-  pnlButtonLogin.Font.Style := [TFontStyle.fsBold];
-  pnlBorderBottom.Visible := True;
+AoEntrar(pnlButtonLogin,pnlBorderBottom)
 end;
 
 procedure TformLogin.btnEntrarMouseLeave(Sender: TObject);
 begin
-  pnlButtonLogin.Color := $00F2556E;
-  pnlButtonLogin.Font.Style := [];
-  pnlBorderBottom.Visible := False;
+AoSair(pnlButtonLogin,pnlBorderBottom)
 end;
 
 procedure TformLogin.Entrar;
@@ -100,10 +98,7 @@ begin
   DM.sqlLogin.ParamByName('USUARIO').AsString := user;
   DM.sqlLogin.Open();
   if pass = DM.sqlLogin.FieldByName('senha').Value then begin
-    formLogin.Hide;
-    formHome.ShowModal;
-
-
+    formLogin.Close;
   end
   else begin
     ShowMessage('Usuário ou senha Incorretos!');

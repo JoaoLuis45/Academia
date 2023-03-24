@@ -1,0 +1,236 @@
+object formReceberPagamento: TformReceberPagamento
+  Left = 0
+  Top = 0
+  Caption = 'formReceberPagamento'
+  ClientHeight = 515
+  ClientWidth = 759
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  WindowState = wsMaximized
+  TextHeight = 15
+  object pnlPrincipal: TPanel
+    Left = 0
+    Top = 0
+    Width = 759
+    Height = 515
+    Align = alClient
+    BevelOuter = bvNone
+    Color = 14077653
+    ParentBackground = False
+    TabOrder = 0
+    ExplicitLeft = -18
+    ExplicitWidth = 777
+    ExplicitHeight = 442
+    object pnlTop: TPanel
+      Left = 0
+      Top = 0
+      Width = 759
+      Height = 57
+      Align = alTop
+      BevelOuter = bvNone
+      TabOrder = 0
+      ExplicitWidth = 777
+      object imgIconForm: TImage
+        Left = 0
+        Top = 0
+        Width = 65
+        Height = 57
+        Align = alLeft
+        Center = True
+        Picture.Data = {
+          0954506E67496D61676589504E470D0A1A0A0000000D49484452000000200000
+          00200806000000737A7AF4000000097048597300000B1300000B1301009A9C18
+          000000017352474200AECE1CE90000000467414D410000B18F0BFC6105000002
+          564944415478DABD578D59C230107D6C001BD40D748332013A81380138817502
+          6002EB04EA04D6097403B281DD4073E68E5E4352495B7DDF775F7F4873EF7E73
+          4C908E95954B2BE756A6563E58EEAD98D4CD26096B332BAF7C8D8148147F41E0
+          14E5825B2BDBB1093CC1B95D505B79E66B0E170E8D0BB8B08C422067EB05255B
+          59AB776B2B1BF55C59998F45E0C1CA92EF0D5B5707D6DDA11DFF195C922ED843
+          2FECB56402EF685C4C96EE22EB48D9A77A26B299B766E6933F85C097BAAFD09D
+          885DBF11722B6F43080C451201722995D3754F65155C25ACFB12D0B11750FC0C
+          BA4B8C14BFA089B5F6E0510EC508147059AD156FF9E31A69F8646FCA3E736D40
+          88406665AF9E0D7F6412156BABA33D8208909B5768EA54D73D31BE18A05CB041
+          3B17E64CE487C01E4DF990B2778FFDEED7EDC3562FF85B693E5A8F61D911019D
+          24A567FDAC87F20C4D08F51EE465FF90AA7D0246B124E6570309D07E677CEF77
+          CA1F10013A68F2C04605DCF9DE075441945B14824ABD5FB2270EE53DC1F121A2
+          173FF624D0851CEA7495320C359DBE09D88B00C567832601099430B7232B273D
+          055C185A04043A530D9A041A03199CA7A7FAA54FA0E51EA886310274831314A1
+          56ACF381BC109B8052E01B46461556DE420496CC56505AB919A03C437BA226A3
+          0E674BEC34F47B43C5244CA2F24B3646C79D0C3C94778C80CF5A984B38A6688F
+          E90219D7439E241C5556D740122221F3FE1EF1F9AF80EBA07ED2950884F2B799
+          30437B3628957531185E27FF1F818E73E5BF86D2A0F5A712D0235508394BD1B1
+          26DA554F21E08F541AA4F49E0952FFC8026B0C3A46BA6F5C1896D938B12AAB00
+          00000049454E44AE426082}
+      end
+      object Label1: TLabel
+        AlignWithMargins = True
+        Left = 68
+        Top = 20
+        Width = 186
+        Height = 34
+        Margins.Top = 20
+        Align = alLeft
+        Caption = 'Receber Pagamentos'
+        Color = clBlack
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 5395028
+        Font.Height = -19
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+        ExplicitHeight = 25
+      end
+    end
+    object pnlButtons: TPanel
+      Left = 0
+      Top = 57
+      Width = 759
+      Height = 458
+      Align = alClient
+      BevelOuter = bvNone
+      TabOrder = 1
+      ExplicitWidth = 777
+      ExplicitHeight = 80
+      object Panel2: TPanel
+        AlignWithMargins = True
+        Left = 3
+        Top = 286
+        Width = 753
+        Height = 60
+        Margins.Top = 20
+        Align = alTop
+        BevelOuter = bvNone
+        Color = 3556340
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentBackground = False
+        ParentFont = False
+        TabOrder = 0
+        ExplicitTop = 69
+        object btnCartao: TSpeedButton
+          Left = 0
+          Top = 0
+          Width = 753
+          Height = 57
+          Align = alClient
+          Caption = 'Cart'#227'o'
+          Flat = True
+          ExplicitLeft = -16
+          ExplicitWidth = 150
+          ExplicitHeight = 71
+        end
+        object Panel3: TPanel
+          Left = 0
+          Top = 57
+          Width = 753
+          Height = 3
+          Align = alBottom
+          BevelOuter = bvNone
+          Color = clWhite
+          ParentBackground = False
+          TabOrder = 0
+          Visible = False
+          ExplicitTop = 71
+          ExplicitWidth = 200
+        end
+      end
+      object Panel4: TPanel
+        AlignWithMargins = True
+        Left = 3
+        Top = 120
+        Width = 753
+        Height = 60
+        Margins.Top = 120
+        Align = alTop
+        BevelOuter = bvNone
+        Color = 5287756
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentBackground = False
+        ParentFont = False
+        TabOrder = 1
+        ExplicitTop = 3
+        object btnPix: TSpeedButton
+          Left = 0
+          Top = 0
+          Width = 753
+          Height = 57
+          Align = alClient
+          Caption = 'Pix'
+          Flat = True
+          ExplicitWidth = 200
+          ExplicitHeight = 71
+        end
+        object Panel5: TPanel
+          Left = 0
+          Top = 57
+          Width = 753
+          Height = 3
+          Align = alBottom
+          BevelOuter = bvNone
+          Color = clWhite
+          ParentBackground = False
+          TabOrder = 0
+          Visible = False
+          ExplicitTop = 71
+          ExplicitWidth = 200
+        end
+      end
+      object Panel1: TPanel
+        AlignWithMargins = True
+        Left = 3
+        Top = 203
+        Width = 753
+        Height = 60
+        Margins.Top = 20
+        Align = alTop
+        BevelOuter = bvNone
+        Color = 3556340
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentBackground = False
+        ParentFont = False
+        TabOrder = 2
+        ExplicitTop = 69
+        object btnDinheiro: TSpeedButton
+          Left = 0
+          Top = 0
+          Width = 753
+          Height = 57
+          Align = alClient
+          Caption = 'Dinheiro'
+          Flat = True
+          ExplicitLeft = -16
+          ExplicitWidth = 150
+          ExplicitHeight = 71
+        end
+        object Panel6: TPanel
+          Left = 0
+          Top = 57
+          Width = 753
+          Height = 3
+          Align = alBottom
+          BevelOuter = bvNone
+          Color = clWhite
+          ParentBackground = False
+          TabOrder = 0
+          Visible = False
+        end
+      end
+    end
+  end
+end

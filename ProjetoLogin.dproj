@@ -4,7 +4,7 @@
         <ProjectVersion>19.5</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Config Condition="'$(Config)'==''">Release</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1</TargetedPlatforms>
         <AppType>Application</AppType>
@@ -95,6 +95,8 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -102,33 +104,38 @@
         </DelphiCompile>
         <DCCReference Include="unitLogin.pas">
             <Form>formLogin</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UnitDM.pas">
             <Form>DM</Form>
-            <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="unitHome.pas">
             <Form>formHome</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="unitClientes.pas">
             <Form>formClientes</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="uFuncoes.pas"/>
         <DCCReference Include="unitAddClients.pas">
             <Form>formAddClients</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="unitPersonais.pas">
             <Form>formPersonais</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="unitaddPersonais.pas">
             <Form>formAddPersonal</Form>
-            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="unitPagamentos.pas">
+            <Form>formPagamentos</Form>
+        </DCCReference>
+        <DCCReference Include="unitReceberPagamentos.pas">
+            <Form>formReceberPagamento</Form>
+        </DCCReference>
+        <DCCReference Include="unitPagFunc.pas">
+            <Form>formPagFunc</Form>
+        </DCCReference>
+        <DCCReference Include="unitRealPag.pas">
+            <Form>formRealPag</Form>
         </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>

@@ -41,6 +41,9 @@ type
     lblTel: TLabel;
     Label4: TLabel;
     lblQtdAlunos: TLabel;
+    Panel12: TPanel;
+    btnVoltar: TSpeedButton;
+    Panel13: TPanel;
     procedure btnAddClientClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure gridPersonaisDrawColumnCell(Sender: TObject; const Rect: TRect;
@@ -56,6 +59,10 @@ type
     procedure btnRemoveClientClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure btnPaymentClick(Sender: TObject);
+    procedure btnVoltarMouseEnter(Sender: TObject);
+    procedure btnVoltarMouseLeave(Sender: TObject);
+    procedure btnVoltarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -70,12 +77,8 @@ implementation
 {$R *.dfm}
 
 uses uFuncoes, unitAddClients, unitClientes, UnitDM, unitHome, unitLogin,
-  unitaddPersonais;
-
-procedure dsDadosDataChange(Sender: TObject; Field: TField);
-  begin
-  ShowMessage('teste');
-  end;
+  unitaddPersonais, unitPagamentos, unitPagFunc, unitRealPag,
+  unitReceberPagamentos;
 
 procedure MakeRounded(Control: TWinControl);
 var
@@ -108,21 +111,18 @@ end;
 
 procedure TformPersonais.btnAddClientMouseEnter(Sender: TObject);
 begin
-    panel4.Color := clGreen;
-    panel4.Font.Style := [TFontStyle.fsBold];
-    panel5.Visible := True;
+AoEntrarVerde(panel4,panel5)
 end;
 
 procedure TformPersonais.btnAddClientMouseLeave(Sender: TObject);
 begin
-    panel4.Color := $0050AF4C;
-    panel4.Font.Style := [];
-    panel5.Visible := False;
+AoSairVerde(panel4,panel5)
 end;
 
 procedure TformPersonais.btnEditarClick(Sender: TObject);
 begin
     formPersonais.Close;
+    formPersonais := Nil;
     formAddPersonal:= TformAddPersonal.Create(self);
     formAddPersonal.Parent := formHome.pnlForms;
     formAddPersonal.Align := alClient;
@@ -130,34 +130,38 @@ begin
     formAddPersonal.Show;
     DM.sqlPersonais.Open();
     dm.sqlPersonais.Edit;
+    formAddPersonal.btnAddPersonal.Caption := 'Editar Personal';
+    formAddPersonal.label1.Caption := 'Editar Personal';
+
 end;
 
 procedure TformPersonais.btnEditarMouseEnter(Sender: TObject);
 begin
-  panel8.Color := $005BA6E5;
-  panel8.Font.Style := [TFontStyle.fsBold];
-  panel9.Visible := True;
+AoEntrar(panel8,panel9)
 end;
 
 procedure TformPersonais.btnEditarMouseLeave(Sender: TObject);
 begin
-    panel8.Color := $00F2556E;
-    panel8.Font.Style := [];
-    panel9.Visible := False;
+AoSair(panel8,panel9)
+end;
+
+procedure TformPersonais.btnPaymentClick(Sender: TObject);
+begin
+    formPagFunc:= TformPagFunc.Create(self);
+    formPagFunc.Parent := formHome.pnlForms;
+    formPagFunc.Align := alClient;
+    formPagFunc.BorderStyle := bsNone;
+    formPagFunc.Show;
 end;
 
 procedure TformPersonais.btnPaymentMouseEnter(Sender: TObject);
 begin
-    panel1.Color := clHotLight;
-    panel1.Font.Style := [TFontStyle.fsBold];
-    pnlborder1.Visible := True;
+AoEntrarAzul(panel1,pnlborder1)
 end;
 
 procedure TformPersonais.btnPaymentMouseLeave(Sender: TObject);
 begin
-    panel1.Color := $00BA8C00;
-    panel1.Font.Style := [];
-    pnlborder1.Visible := False;
+AoSairAzul(panel1,pnlborder1)
 end;
 
 procedure TformPersonais.btnRemoveClientClick(Sender: TObject);
@@ -169,16 +173,27 @@ end;
 
 procedure TformPersonais.btnRemoveClientMouseEnter(Sender: TObject);
 begin
-    panel2.Color := clMaroon;
-    panel2.Font.Style := [TFontStyle.fsBold];
-    panel3.Visible := True;
+AoEntrarVermelho(panel2,panel3)
 end;
 
 procedure TformPersonais.btnRemoveClientMouseLeave(Sender: TObject);
 begin
-    panel2.Color := $003643F4;
-    panel2.Font.Style := [];
-    panel3.Visible := False;
+AoSairVermelho(panel2,panel3)
+end;
+
+procedure TformPersonais.btnVoltarClick(Sender: TObject);
+begin
+formPersonais.Close;
+end;
+
+procedure TformPersonais.btnVoltarMouseEnter(Sender: TObject);
+begin
+AoEntrar(panel12,panel13)
+end;
+
+procedure TformPersonais.btnVoltarMouseLeave(Sender: TObject);
+begin
+AoSair(panel12,panel13)
 end;
 
 procedure TformPersonais.FormCreate(Sender: TObject);
@@ -195,16 +210,29 @@ begin
   MakeRounded(panel2);
   MakeRounded(panel4);
   MakeRounded(panel8);
+  MakeRounded(panel12);
   // aumentando a altura das linhas da dbgrid
   TDBGridPadrao(gridPersonais).DefaultRowHeight := 30;
   TDBGridPadrao(gridPersonais).ClientHeight := (30 * TDBGridPadrao(gridPersonais).RowCount + 30);
   DM.sqlPersonais.Open();
 
+   if (DM.sqlPersonais.FieldByName('imagem').Value = '') or (DM.sqlPersonais.IsEmpty = True) then begin
+    lblNome.Caption := '';
+    lblIdade.Caption := '';
+    lblTel.Caption := '';
+    lblQtdAlunos.Caption := '';
+   end else begin
+    imgPersonal.Picture.LoadFromFile(DM.sqlPersonais.FieldByName('imagem').Value);
+    lblNome.Caption := DM.sqlPersonais.FieldByName('nome').Value;
+    lblIdade.Caption := DM.sqlPersonais.FieldByName('idade').Value;
+    lblTel.Caption := DM.sqlPersonais.FieldByName('nome').Value;
+    DM.sqlQtdAlunos.SQL.Clear;
+    DM.sqlQtdAlunos.SQL.Text := 'SELECT * FROM clientes WHERE id_personal = :pPersonal';
+    DM.sqlQtdAlunos.ParamByName('pPersonal').Value := DM.sqlPersonais.FieldByName('id').Value;
+    DM.sqlQtdAlunos.Open();
+    lblQtdAlunos.Caption := IntToStr(DM.sqlQtdAlunos.RecordCount);
+   end;
 
-  imgPersonal.Picture.LoadFromFile(DM.sqlPersonais.FieldByName('imagem').Value);
-  lblNome.Caption := DM.sqlPersonais.FieldByName('nome').Value;
-  lblIdade.Caption := DM.sqlPersonais.FieldByName('idade').Value;
-  lblTel.Caption := DM.sqlPersonais.FieldByName('nome').Value;
 end;
 
 procedure TformPersonais.gridPersonaisDrawColumnCell(Sender: TObject;

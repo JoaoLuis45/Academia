@@ -1,0 +1,197 @@
+unit unitReceberPagamentos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.StdCtrls,
+  Vcl.Imaging.pngimage, Vcl.ExtCtrls, Vcl.ExtDlgs, Vcl.DBCtrls, Vcl.Mask,
+  SWHDBEdit;
+
+type
+  TformReceberPagamento = class(TForm)
+    pnlPrincipal: TPanel;
+    pnlTop: TPanel;
+    imgIconForm: TImage;
+    Label1: TLabel;
+    pnlButtons: TPanel;
+    pnlFormasDePagamento: TPanel;
+    Panel1: TPanel;
+    btnDinheiro: TSpeedButton;
+    Panel6: TPanel;
+    Panel2: TPanel;
+    btnCartao: TSpeedButton;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    btnPix: TSpeedButton;
+    Panel5: TPanel;
+    pnlFormaPag: TPanel;
+    pnlTopPag: TPanel;
+    imgLogoPix: TImage;
+    pnlData: TPanel;
+    lblData: TLabel;
+    txtData: TSWHDBEdit;
+    pnlValor: TPanel;
+    lblValor: TLabel;
+    txtValor: TSWHDBEdit;
+    pnlName: TPanel;
+    lblName: TLabel;
+    txrName: TDBLookupComboBox;
+    pnlPagar: TPanel;
+    btnPagar: TSpeedButton;
+    Panel8: TPanel;
+    imgLogoCartao: TImage;
+    imgLogoDinheiro: TImage;
+    lblTipoPag: TLabel;
+    procedure FormShow(Sender: TObject);
+    procedure btnPixMouseEnter(Sender: TObject);
+    procedure btnPixMouseLeave(Sender: TObject);
+    procedure btnDinheiroMouseEnter(Sender: TObject);
+    procedure btnDinheiroMouseLeave(Sender: TObject);
+    procedure btnCartaoMouseEnter(Sender: TObject);
+    procedure btnCartaoMouseLeave(Sender: TObject);
+    procedure btnPagarMouseEnter(Sender: TObject);
+    procedure btnPagarMouseLeave(Sender: TObject);
+    procedure btnPixClick(Sender: TObject);
+    procedure btnDinheiroClick(Sender: TObject);
+    procedure btnCartaoClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  formReceberPagamento: TformReceberPagamento;
+
+implementation
+
+{$R *.dfm}
+
+uses UnitDM;
+
+procedure MakeRounded(Control: TWinControl);
+var
+R: TRect;
+Rgn: HRGN;
+begin
+with Control do
+begin
+ R := ClientRect;
+ rgn := CreateRoundRectRgn(R.Left, R.Top, R.Right, R.Bottom, 10, 10);
+ Perform(EM_GETRECT, 0, lParam(@r));
+ InflateRect(r, - 5, - 5);
+ Perform(EM_SETRECTNP, 0, lParam(@r));
+ SetWindowRgn(Handle, rgn, True);
+ Invalidate;
+end;
+end;
+procedure TformReceberPagamento.btnCartaoClick(Sender: TObject);
+begin
+    if pnlFormaPag.Visible = False then begin
+      pnlFormaPag.Visible := True;
+      lblTipoPag.Caption := 'Cartão';
+      imgLogoPix.Visible := False;
+      imgLogoDinheiro.Visible := False;
+      imgLogoCartao.Visible := True;
+  end else begin
+    pnlFormaPag.Visible := False;
+    lblTipoPag.Caption := '';
+
+  end;
+end;
+
+procedure TformReceberPagamento.btnCartaoMouseEnter(Sender: TObject);
+begin
+  panel2.Color := $005BA6E5;
+  panel2.Font.Style := [TFontStyle.fsBold];
+  panel3.Visible := True;
+end;
+
+procedure TformReceberPagamento.btnCartaoMouseLeave(Sender: TObject);
+begin
+    panel2.Color := $00F2556E;
+    panel2.Font.Style := [];
+    panel3.Visible := False;
+end;
+
+procedure TformReceberPagamento.btnDinheiroClick(Sender: TObject);
+begin
+    if pnlFormaPag.Visible = False then begin
+      pnlFormaPag.Visible := True;
+      lblTipoPag.Caption := 'Dinheiro';
+      imgLogoDinheiro.Visible := True;
+  end else begin
+    pnlFormaPag.Visible := False;
+    lblTipoPag.Caption := '';
+
+  end;
+end;
+
+procedure TformReceberPagamento.btnDinheiroMouseEnter(Sender: TObject);
+begin
+  panel1.Color := $005BA6E5;
+  panel1.Font.Style := [TFontStyle.fsBold];
+  panel6.Visible := True;
+end;
+
+procedure TformReceberPagamento.btnDinheiroMouseLeave(Sender: TObject);
+begin
+    panel1.Color := $00F2556E;
+    panel1.Font.Style := [];
+    panel6.Visible := False;
+end;
+
+procedure TformReceberPagamento.btnPagarMouseEnter(Sender: TObject);
+begin
+  pnlPagar.Color := $005BA6E5;
+  pnlPagar.Font.Style := [TFontStyle.fsBold];
+  panel8.Visible := True;
+end;
+
+procedure TformReceberPagamento.btnPagarMouseLeave(Sender: TObject);
+begin
+    pnlPagar.Color := $00F2556E;
+    pnlPagar.Font.Style := [];
+    panel8.Visible := False;
+end;
+
+procedure TformReceberPagamento.btnPixClick(Sender: TObject);
+begin
+  if pnlFormaPag.Visible = False then begin
+      pnlFormaPag.Visible := True;
+      lblTipoPag.Caption := 'Pix';
+      imgLogoPix.Visible := True;
+      imgLogoDinheiro.Visible := False;
+      imgLogoCartao.Visible := False;
+  end else begin
+    pnlFormaPag.Visible := False;
+    lblTipoPag.Caption := '';
+
+  end;
+
+end;
+
+procedure TformReceberPagamento.btnPixMouseEnter(Sender: TObject);
+begin
+  panel4.Color := $005BA6E5;
+  panel4.Font.Style := [TFontStyle.fsBold];
+  panel5.Visible := True;
+end;
+
+procedure TformReceberPagamento.btnPixMouseLeave(Sender: TObject);
+begin
+    panel4.Color := $00F2556E;
+    panel4.Font.Style := [];
+    panel5.Visible := False;
+end;
+
+procedure TformReceberPagamento.FormShow(Sender: TObject);
+begin
+MakeRounded(panel1);
+MakeRounded(panel2);
+MakeRounded(panel4);
+MakeRounded(pnlPagar);
+end;
+
+end.

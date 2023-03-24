@@ -1,0 +1,124 @@
+unit unitPagFunc;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids, Vcl.DBGrids,
+  Vcl.Buttons, Vcl.StdCtrls, Vcl.Imaging.pngimage, Vcl.ExtCtrls;
+
+type
+  TDBGridPadrao = class(TDBGrid);
+  TformPagFunc = class(TForm)
+    pnlPrincipal: TPanel;
+    pnlTop: TPanel;
+    imgIconForm: TImage;
+    Label1: TLabel;
+    pnlButtons: TPanel;
+    Panel2: TPanel;
+    btnExcluirPagamento: TSpeedButton;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    btnReceberPagamento: TSpeedButton;
+    Panel5: TPanel;
+    pnlGrid: TPanel;
+    gridPagFunc: TDBGrid;
+    pnlBottom: TPanel;
+    lblSave: TLabel;
+    Panel6: TPanel;
+    btnSalvar: TSpeedButton;
+    Panel7: TPanel;
+    Panel8: TPanel;
+    btnEditar: TSpeedButton;
+    Panel9: TPanel;
+    procedure FormCreate(Sender: TObject);
+    procedure FormResize(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure gridPagFuncDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  formPagFunc: TformPagFunc;
+
+implementation
+
+{$R *.dfm}
+
+uses uFuncoes, unitAddClients, unitaddPersonais, unitClientes, UnitDM, unitHome,
+  unitLogin, unitPagamentos, unitPersonais, unitReceberPagamentos;
+
+procedure MakeRounded(Control: TWinControl);
+var
+R: TRect;
+Rgn: HRGN;
+begin
+with Control do
+begin
+ R := ClientRect;
+ rgn := CreateRoundRectRgn(R.Left, R.Top, R.Right, R.Bottom, 10, 10);
+ Perform(EM_GETRECT, 0, lParam(@r));
+ InflateRect(r, - 5, - 5);
+ Perform(EM_SETRECTNP, 0, lParam(@r));
+ SetWindowRgn(Handle, rgn, True);
+ Invalidate;
+end;
+end;
+
+procedure TformPagFunc.FormCreate(Sender: TObject);
+var
+    I: Integer;
+begin
+    For I := 0 to gridPagFunc.FieldCount - 1 do
+        gridPagFunc.Fields[i].Tag := 30;
+    AutoSizeDBGrid(gridPagFunc);
+end;
+
+procedure TformPagFunc.FormResize(Sender: TObject);
+begin
+  AutoSizeDBGrid(gridPagFunc);
+  // aumentando a altura das linhas da dbgrid
+  TDBGridPadrao(gridPagFunc).DefaultRowHeight := 30;
+  TDBGridPadrao(gridPagFunc).ClientHeight := (30 * TDBGridPadrao(gridPagFunc).RowCount + 30);
+end;
+
+procedure TformPagFunc.FormShow(Sender: TObject);
+begin
+
+  // aumentando a altura das linhas da dbgrid
+  TDBGridPadrao(gridPagFunc).DefaultRowHeight := 30;
+  TDBGridPadrao(gridPagFunc).ClientHeight := (30 * TDBGridPadrao(gridPagFunc).RowCount + 30);
+
+
+end;
+
+procedure TformPagFunc.gridPagFuncDrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+begin
+  //zebrando a dbgrid
+  if Odd(gridPagFunc.DataSource.DataSet.RecNo) then begin
+    gridPagFunc.Canvas.Brush.Color := $00E9E9E9;
+  end else
+    gridPagFunc.Canvas.Brush.Color := clWhite;
+
+  //mudando a cor da seleção
+  if (gdSelected in State) then
+    begin
+      gridPagFunc.Canvas.Brush.Color := $005BA6E5;
+      gridPagFunc.Canvas.Font.Color := clWhite;
+      gridPagFunc.Canvas.Font.Style := [TFontStyle.fsBold];
+    end;
+
+    gridPagFunc.Canvas.FillRect(rect);
+    gridPagFunc.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+
+  //mudando a posição e alinhamento vertical do texto de cadalinha
+  gridPagFunc.Canvas.TextRect(Rect, rect.Left + 8, rect.Top + 8, Column.Field.DisplayText);
+end;
+
+
+end.

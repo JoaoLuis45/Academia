@@ -2,8 +2,8 @@ object formClientes: TformClientes
   Left = 0
   Top = 0
   BorderStyle = bsSingle
-  ClientHeight = 441
-  ClientWidth = 757
+  ClientHeight = 440
+  ClientWidth = 1055
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,8 +18,8 @@ object formClientes: TformClientes
   object pnlPrincipal: TPanel
     Left = 0
     Top = 0
-    Width = 757
-    Height = 441
+    Width = 1055
+    Height = 440
     Align = alClient
     BevelOuter = bvNone
     Color = 14077653
@@ -28,12 +28,12 @@ object formClientes: TformClientes
     object pnlTop: TPanel
       Left = 0
       Top = 0
-      Width = 761
+      Width = 1059
       Height = 57
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 0
-      ExplicitWidth = 757
+      ExplicitWidth = 1055
       object imgIconForm: TImage
         Left = 0
         Top = 0
@@ -82,12 +82,12 @@ object formClientes: TformClientes
     object pnlButtons: TPanel
       Left = 0
       Top = 57
-      Width = 761
+      Width = 1059
       Height = 80
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitWidth = 757
+      ExplicitWidth = 1055
       object panel1: TPanel
         AlignWithMargins = True
         Left = 810
@@ -115,6 +115,7 @@ object formClientes: TformClientes
           Align = alClient
           Caption = 'Pagamentos Realizados'
           Flat = True
+          OnClick = btnPaymentClick
           OnMouseEnter = btnPaymentMouseEnter
           OnMouseLeave = btnPaymentMouseLeave
         end
@@ -225,18 +226,18 @@ object formClientes: TformClientes
     object pnlGrid: TPanel
       Left = 0
       Top = 137
-      Width = 761
-      Height = 255
+      Width = 1059
+      Height = 254
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 2
-      ExplicitWidth = 757
-      ExplicitHeight = 254
+      ExplicitWidth = 1055
+      ExplicitHeight = 253
       object gridClients: TDBGrid
         Left = 0
         Top = 0
-        Width = 761
-        Height = 255
+        Width = 1059
+        Height = 254
         Align = alClient
         BiDiMode = bdLeftToRight
         BorderStyle = bsNone
@@ -249,7 +250,7 @@ object formClientes: TformClientes
         Font.Height = -12
         Font.Name = 'Segoe UI'
         Font.Style = [fsBold]
-        Options = [dgTitles, dgColumnResize, dgColLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+        Options = [dgTitles, dgColLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
         ParentBiDiMode = False
         ParentFont = False
         TabOrder = 0
@@ -272,7 +273,6 @@ object formClientes: TformClientes
             FieldName = 'telefone'
             Title.Alignment = taCenter
             Title.Caption = 'Telefone'
-            Width = 151
             Visible = True
           end
           item
@@ -280,21 +280,27 @@ object formClientes: TformClientes
             FieldName = 'dataPag'
             Title.Alignment = taCenter
             Title.Caption = 'Data de Pagamento'
-            Width = 247
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'personalCliente'
+            Title.Alignment = taCenter
+            Title.Caption = 'Personal'
             Visible = True
           end>
       end
     end
     object pnlBottom: TPanel
       Left = 0
-      Top = 392
-      Width = 761
+      Top = 391
+      Width = 1059
       Height = 50
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 3
-      ExplicitTop = 391
-      ExplicitWidth = 757
+      ExplicitTop = 390
+      ExplicitWidth = 1055
       object lblSave: TLabel
         AlignWithMargins = True
         Left = 10
@@ -316,7 +322,7 @@ object formClientes: TformClientes
       end
       object Panel6: TPanel
         AlignWithMargins = True
-        Left = 608
+        Left = 906
         Top = 3
         Width = 150
         Height = 44
@@ -333,7 +339,7 @@ object formClientes: TformClientes
         ParentFont = False
         TabOrder = 0
         Visible = False
-        ExplicitLeft = 604
+        ExplicitLeft = 902
         object btnSalvar: TSpeedButton
           Left = 0
           Top = 0
@@ -363,7 +369,7 @@ object formClientes: TformClientes
       end
       object Panel8: TPanel
         AlignWithMargins = True
-        Left = 415
+        Left = 713
         Top = 3
         Width = 150
         Height = 44
@@ -379,7 +385,7 @@ object formClientes: TformClientes
         ParentBackground = False
         ParentFont = False
         TabOrder = 1
-        ExplicitLeft = 411
+        ExplicitLeft = 709
         object btnEditar: TSpeedButton
           Left = 0
           Top = 0
@@ -395,6 +401,98 @@ object formClientes: TformClientes
           ExplicitHeight = 71
         end
         object Panel9: TPanel
+          Left = 0
+          Top = 41
+          Width = 150
+          Height = 3
+          Align = alBottom
+          BevelOuter = bvNone
+          Color = clWhite
+          ParentBackground = False
+          TabOrder = 0
+          Visible = False
+        end
+      end
+      object Panel10: TPanel
+        AlignWithMargins = True
+        Left = 520
+        Top = 3
+        Width = 150
+        Height = 44
+        Margins.Left = 40
+        Align = alRight
+        BevelOuter = bvNone
+        Color = 15881582
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentBackground = False
+        ParentFont = False
+        TabOrder = 2
+        Visible = False
+        ExplicitLeft = 516
+        object btnCancelar: TSpeedButton
+          Left = 0
+          Top = 0
+          Width = 150
+          Height = 41
+          Align = alClient
+          Caption = 'Cancelar'
+          Flat = True
+          OnClick = btnCancelarClick
+          OnMouseEnter = btnCancelarMouseEnter
+          OnMouseLeave = btnCancelarMouseLeave
+          ExplicitWidth = 200
+          ExplicitHeight = 71
+        end
+        object Panel11: TPanel
+          Left = 0
+          Top = 41
+          Width = 150
+          Height = 3
+          Align = alBottom
+          BevelOuter = bvNone
+          Color = clWhite
+          ParentBackground = False
+          TabOrder = 0
+          Visible = False
+        end
+      end
+      object Panel12: TPanel
+        AlignWithMargins = True
+        Left = 37
+        Top = 3
+        Width = 150
+        Height = 44
+        Margins.Left = 20
+        Align = alLeft
+        BevelOuter = bvNone
+        Color = 15881582
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentBackground = False
+        ParentFont = False
+        TabOrder = 3
+        object btnVoltar: TSpeedButton
+          Left = 0
+          Top = 0
+          Width = 150
+          Height = 41
+          Align = alClient
+          Caption = 'Voltar'
+          Flat = True
+          OnClick = btnVoltarClick
+          OnMouseEnter = btnVoltarMouseEnter
+          OnMouseLeave = btnVoltarMouseLeave
+          ExplicitWidth = 200
+          ExplicitHeight = 71
+        end
+        object Panel13: TPanel
           Left = 0
           Top = 41
           Width = 150

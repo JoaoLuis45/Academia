@@ -2,11 +2,21 @@ unit uFuncoes;
 
 interface
 
-uses Grids, DBGrids;
+uses Grids, DBGrids, Vcl.ExtCtrls;
 
   procedure AutoSizeDBGrid(const xDBGrid: TDBGrid);
-
+  procedure AoEntrar(pnl1: TPanel; pnl2: TPanel);
+  procedure AoSair(pnl1: TPanel; pnl2: TPanel);
+  procedure AoEntrarVermelho(pnl1: TPanel; pnl2: TPanel);
+  procedure AoSairVermelho(pnl1: TPanel; pnl2: TPanel);
+  procedure AoEntrarVerde(pnl1: TPanel; pnl2: TPanel);
+  procedure AoSairVerde(pnl1: TPanel; pnl2: TPanel);
+  procedure AoEntrarAzul(pnl1: TPanel; pnl2: TPanel);
+  procedure AoSairAzul(pnl1: TPanel; pnl2: TPanel);
 implementation
+
+uses
+  System.UITypes, Vcl.Graphics;
 
 procedure AutoSizeDBGrid(const xDBGrid: TDBGrid);
 var
@@ -55,4 +65,55 @@ begin
   end;
 end;
 
+procedure AoEntrar(pnl1: TPanel; pnl2: TPanel);
+begin
+  pnl1.Color := $005BA6E5;
+  pnl1.Font.Style := [TFontStyle.fsBold];
+  pnl2.Visible := True;
+end;
+
+procedure AoSair(pnl1: TPanel; pnl2: TPanel);
+begin
+  pnl1.Color := $00F2556E;
+  pnl1.Font.Style := [];
+  pnl2.Visible := False;
+end;
+
+
+procedure AoEntrarVermelho(pnl1: TPanel; pnl2: TPanel);
+begin
+    pnl1.Color := clMaroon;
+    pnl1.Font.Style := [TFontStyle.fsBold];
+    pnl2.Visible := True;
+end;
+procedure AoSairVermelho(pnl1: TPanel; pnl2: TPanel);
+begin
+    pnl1.Color := $003643F4;
+    pnl1.Font.Style := [];
+    pnl2.Visible := False;
+end;
+procedure AoEntrarVerde(pnl1: TPanel; pnl2: TPanel);
+begin
+    pnl1.Color := clGreen;
+    pnl1.Font.Style := [TFontStyle.fsBold];
+    pnl2.Visible := True;
+end;
+procedure AoSairVerde(pnl1: TPanel; pnl2: TPanel);
+begin
+    pnl1.Color := $0050AF4C;
+    pnl1.Font.Style := [];
+    pnl2.Visible := False;
+end;
+procedure AoEntrarAzul(pnl1: TPanel; pnl2: TPanel);
+begin
+    pnl1.Color := clHotLight;
+    pnl1.Font.Style := [TFontStyle.fsBold];
+    pnl2.Visible := True;
+end;
+procedure AoSairAzul(pnl1: TPanel; pnl2: TPanel);
+begin
+    pnl1.Color := $00BA8C00;
+    pnl1.Font.Style := [];
+    pnl2.Visible := False;
+end;
 end.

@@ -1,0 +1,218 @@
+object DM: TDM
+  Height = 480
+  Width = 640
+  object conexao: TFDConnection
+    Params.Strings = (
+      'Database=academia'
+      'User_Name=admin'
+      'Password=joaobr12'
+      'Server=academia.cfydoor5czhr.us-east-1.rds.amazonaws.com'
+      'DriverID=MySQL')
+    Connected = True
+    LoginPrompt = False
+    Left = 40
+    Top = 32
+  end
+  object sqlLogin: TFDQuery
+    Connection = conexao
+    Left = 40
+    Top = 96
+  end
+  object sqlClientes: TFDQuery
+    Active = True
+    Connection = conexao
+    SQL.Strings = (
+      'SELECT * FROM clientes')
+    Left = 48
+    Top = 256
+    object sqlClientesid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object sqlClientesnome: TStringField
+      FieldName = 'nome'
+      Origin = 'nome'
+      Required = True
+      Size = 50
+    end
+    object sqlClientestelefone: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'telefone'
+      Origin = 'telefone'
+      Size = 16
+    end
+    object sqlClientesdataPag: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'dataPag'
+      Origin = 'dataPag'
+    end
+    object sqlClientesrua: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'rua'
+      Origin = 'rua'
+      Size = 50
+    end
+    object sqlClientesbairro: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'bairro'
+      Origin = 'bairro'
+      Size = 30
+    end
+    object sqlClientesnum: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'num'
+      Origin = 'num'
+    end
+    object sqlClientesemail: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'email'
+      Origin = 'email'
+      Size = 50
+    end
+    object sqlClientesidade: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'idade'
+      Origin = 'idade'
+    end
+    object sqlClientesprob_saude: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'prob_saude'
+      Origin = 'prob_saude'
+      Size = 100
+    end
+    object sqlClientestem_prob: TBooleanField
+      AutoGenerateValue = arDefault
+      FieldName = 'tem_prob'
+      Origin = 'tem_prob'
+    end
+    object sqlClientescomec_agr: TBooleanField
+      AutoGenerateValue = arDefault
+      FieldName = 'comec_agr'
+      Origin = 'comec_agr'
+    end
+    object sqlClientesacomp: TBooleanField
+      AutoGenerateValue = arDefault
+      FieldName = 'acomp'
+      Origin = 'acomp'
+    end
+    object sqlClientesid_personal: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'id_personal'
+      Origin = 'id_personal'
+    end
+  end
+  object dsClientes: TDataSource
+    DataSet = sqlClientes
+    Left = 48
+    Top = 312
+  end
+  object sqlPersonais: TFDQuery
+    Connection = conexao
+    SQL.Strings = (
+      'SELECT * FROM personais')
+    Left = 120
+    Top = 264
+    object sqlPersonaisid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object sqlPersonaisnome: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nome'
+      Origin = 'nome'
+      Size = 50
+    end
+    object sqlPersonaisidade: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'idade'
+      Origin = 'idade'
+    end
+    object sqlPersonaistelefone: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'telefone'
+      Origin = 'telefone'
+      Size = 16
+    end
+    object sqlPersonaisimagem: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'imagem'
+      Origin = 'imagem'
+      Size = 4000
+    end
+  end
+  object dsPersonais: TDataSource
+    DataSet = sqlPersonais
+    OnDataChange = dsPersonaisDataChange
+    Left = 120
+    Top = 320
+  end
+  object sqlQtdAlunos: TFDQuery
+    Connection = conexao
+    SQL.Strings = (
+      'SELECT * FROM clientes WHERE id_personal = :pPersonal')
+    Left = 184
+    Top = 264
+    ParamData = <
+      item
+        Name = 'pPersonal'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+  end
+  object sqlPagamentos: TFDQuery
+    Active = True
+    Connection = conexao
+    SQL.Strings = (
+      'SELECT * FROM pagamentos')
+    Left = 264
+    Top = 264
+    object sqlPagamentosid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object sqlPagamentosid_cliente: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'id_cliente'
+      Origin = 'id_cliente'
+    end
+    object sqlPagamentosvalor: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'valor'
+      Origin = 'valor'
+      Precision = 10
+      Size = 2
+    end
+    object sqlPagamentosdata_pag: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'data_pag'
+      Origin = 'data_pag'
+    end
+    object sqlPagamentostipo: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'tipo'
+      Origin = 'tipo'
+      Size = 30
+    end
+    object sqlPagamentosNomeCliente: TStringField
+      FieldKind = fkLookup
+      FieldName = 'NomeCliente'
+      LookupDataSet = sqlClientes
+      LookupKeyFields = 'id'
+      LookupResultField = 'nome'
+      KeyFields = 'id_cliente'
+      Size = 50
+      Lookup = True
+    end
+  end
+  object dsPagamentos: TDataSource
+    DataSet = sqlPagamentos
+    OnDataChange = dsPersonaisDataChange
+    Left = 264
+    Top = 320
+  end
+end

@@ -19,6 +19,7 @@ object DM: TDM
     Top = 96
   end
   object sqlClientes: TFDQuery
+    Active = True
     Connection = conexao
     SQL.Strings = (
       'SELECT * FROM clientes')
@@ -26,80 +27,65 @@ object DM: TDM
     Top = 256
     object sqlClientesid: TFDAutoIncField
       FieldName = 'id'
-      Origin = 'id'
-      ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
     end
     object sqlClientesnome: TStringField
       FieldName = 'nome'
-      Origin = 'nome'
       Required = True
       Size = 50
     end
     object sqlClientestelefone: TStringField
-      AutoGenerateValue = arDefault
       FieldName = 'telefone'
-      Origin = 'telefone'
+      EditMask = '(##) # ####-####;1;_'
       Size = 16
     end
     object sqlClientesdataPag: TDateField
-      AutoGenerateValue = arDefault
       FieldName = 'dataPag'
-      Origin = 'dataPag'
+      EditMask = '##/##/####;1;_'
     end
     object sqlClientesrua: TStringField
-      AutoGenerateValue = arDefault
       FieldName = 'rua'
-      Origin = 'rua'
       Size = 50
     end
     object sqlClientesbairro: TStringField
-      AutoGenerateValue = arDefault
       FieldName = 'bairro'
-      Origin = 'bairro'
       Size = 30
     end
-    object sqlClientesnum: TIntegerField
-      AutoGenerateValue = arDefault
+    object sqlClientesnum: TStringField
       FieldName = 'num'
-      Origin = 'num'
+      Size = 10
     end
     object sqlClientesemail: TStringField
-      AutoGenerateValue = arDefault
       FieldName = 'email'
-      Origin = 'email'
       Size = 50
     end
     object sqlClientesidade: TIntegerField
-      AutoGenerateValue = arDefault
       FieldName = 'idade'
-      Origin = 'idade'
     end
     object sqlClientesprob_saude: TStringField
-      AutoGenerateValue = arDefault
       FieldName = 'prob_saude'
-      Origin = 'prob_saude'
       Size = 100
     end
     object sqlClientestem_prob: TBooleanField
-      AutoGenerateValue = arDefault
       FieldName = 'tem_prob'
-      Origin = 'tem_prob'
     end
     object sqlClientescomec_agr: TBooleanField
-      AutoGenerateValue = arDefault
       FieldName = 'comec_agr'
-      Origin = 'comec_agr'
     end
     object sqlClientesacomp: TBooleanField
-      AutoGenerateValue = arDefault
       FieldName = 'acomp'
-      Origin = 'acomp'
     end
     object sqlClientesid_personal: TIntegerField
-      AutoGenerateValue = arDefault
       FieldName = 'id_personal'
-      Origin = 'id_personal'
+    end
+    object sqlClientespersonalCliente: TStringField
+      FieldKind = fkLookup
+      FieldName = 'personalCliente'
+      LookupDataSet = sqlPersonais
+      LookupKeyFields = 'id'
+      LookupResultField = 'nome'
+      KeyFields = 'id_personal'
+      Size = 50
+      Lookup = True
     end
   end
   object dsClientes: TDataSource
@@ -108,6 +94,7 @@ object DM: TDM
     Top = 312
   end
   object sqlPersonais: TFDQuery
+    Active = True
     Connection = conexao
     SQL.Strings = (
       'SELECT * FROM personais')
@@ -153,13 +140,129 @@ object DM: TDM
     Connection = conexao
     SQL.Strings = (
       'SELECT * FROM clientes WHERE id_personal = :pPersonal')
-    Left = 192
-    Top = 272
+    Left = 184
+    Top = 264
     ParamData = <
       item
         Name = 'pPersonal'
         DataType = ftInteger
         ParamType = ptInput
       end>
+  end
+  object sqlPagamentos: TFDQuery
+    Active = True
+    Connection = conexao
+    SQL.Strings = (
+      'SELECT * FROM pagamentos')
+    Left = 264
+    Top = 264
+    object sqlPagamentosid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object sqlPagamentosid_cliente: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'id_cliente'
+      Origin = 'id_cliente'
+    end
+    object sqlPagamentosvalor: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'valor'
+      Origin = 'valor'
+      Required = True
+      currency = True
+      Precision = 10
+      Size = 2
+    end
+    object sqlPagamentosdata_pag: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'data_pag'
+      Origin = 'data_pag'
+      Required = True
+      EditMask = '##/##/####;1;_'
+    end
+    object sqlPagamentostipo: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'tipo'
+      Origin = 'tipo'
+      Size = 30
+    end
+    object sqlPagamentosNomeCliente: TStringField
+      FieldKind = fkLookup
+      FieldName = 'NomeCliente'
+      LookupDataSet = sqlClientes
+      LookupKeyFields = 'id'
+      LookupResultField = 'nome'
+      KeyFields = 'id_cliente'
+      Required = True
+      Size = 50
+      Lookup = True
+    end
+  end
+  object dsPagamentos: TDataSource
+    DataSet = sqlPagamentos
+    OnDataChange = dsPersonaisDataChange
+    Left = 264
+    Top = 320
+  end
+  object sqlPagFunc: TFDQuery
+    Active = True
+    Connection = conexao
+    SQL.Strings = (
+      'SELECT * FROM pagamentos_func')
+    Left = 352
+    Top = 264
+    object sqlPagFuncid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object sqlPagFuncid_func: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'id_func'
+      Origin = 'id_func'
+    end
+    object sqlPagFuncdata_pag: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'data_pag'
+      Origin = 'data_pag'
+      Required = True
+      EditMask = '##/##/####;1;_'
+    end
+    object sqlPagFuncvalor: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'valor'
+      Origin = 'valor'
+      Required = True
+      currency = True
+      Precision = 10
+      Size = 2
+    end
+    object sqlPagFunctipo: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'tipo'
+      Origin = 'tipo'
+      Size = 30
+    end
+    object sqlPagFuncNomeFunc: TStringField
+      FieldKind = fkLookup
+      FieldName = 'NomeFunc'
+      LookupDataSet = sqlPersonais
+      LookupKeyFields = 'id'
+      LookupResultField = 'nome'
+      KeyFields = 'id_func'
+      Required = True
+      Size = 50
+      Lookup = True
+    end
+  end
+  object dsPagFunc: TDataSource
+    DataSet = sqlPagFunc
+    OnDataChange = dsPersonaisDataChange
+    Left = 352
+    Top = 320
   end
 end

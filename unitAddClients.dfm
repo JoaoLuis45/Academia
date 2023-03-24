@@ -5,7 +5,7 @@ object formAddClients: TformAddClients
   BorderStyle = bsNone
   Caption = 'formAddClients'
   ClientHeight = 543
-  ClientWidth = 803
+  ClientWidth = 986
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,21 +17,23 @@ object formAddClients: TformAddClients
   object pnlPrincipal: TPanel
     Left = 0
     Top = 0
-    Width = 803
+    Width = 986
     Height = 543
     Align = alClient
     BevelOuter = bvNone
     Color = 14077653
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 803
     object pnlTop: TPanel
       Left = 0
       Top = 0
-      Width = 803
+      Width = 986
       Height = 57
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 0
+      ExplicitWidth = 803
       object imgIconForm: TImage
         Left = 0
         Top = 0
@@ -80,11 +82,30 @@ object formAddClients: TformAddClients
     object pnlDados: TPanel
       Left = 0
       Top = 57
-      Width = 803
+      Width = 986
       Height = 399
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 1
+      ExplicitWidth = 803
+      object lblSave: TLabel
+        AlignWithMargins = True
+        Left = 3
+        Top = 349
+        Width = 980
+        Height = 30
+        Margins.Bottom = 20
+        Align = alBottom
+        Color = clBlack
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -21
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+        ExplicitWidth = 979
+      end
       object pnlNome: TPanel
         Left = 30
         Top = 24
@@ -225,6 +246,7 @@ object formAddClients: TformAddClients
           ParentFont = False
           TabOrder = 0
           MudarColor = 6006501
+          ExplicitWidth = 134
         end
       end
       object pnlRua: TPanel
@@ -354,6 +376,7 @@ object formAddClients: TformAddClients
           Font.Height = -15
           Font.Name = 'Segoe UI'
           Font.Style = []
+          MaxLength = 16
           ParentFont = False
           TabOrder = 0
           MudarColor = 6006501
@@ -400,7 +423,7 @@ object formAddClients: TformAddClients
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
-          ExplicitWidth = 35
+          ExplicitWidth = 113
         end
         object txtProbSaude: TSWHDBEdit
           Left = 0
@@ -500,14 +523,15 @@ object formAddClients: TformAddClients
     object pnlBottom: TPanel
       Left = 0
       Top = 456
-      Width = 803
+      Width = 986
       Height = 87
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 2
+      ExplicitWidth = 803
       object Panel6: TPanel
         AlignWithMargins = True
-        Left = 583
+        Left = 766
         Top = 3
         Width = 150
         Height = 34
@@ -525,6 +549,7 @@ object formAddClients: TformAddClients
         ParentBackground = False
         ParentFont = False
         TabOrder = 0
+        ExplicitLeft = 583
         object btnEditar: TSpeedButton
           Left = 0
           Top = 0
@@ -554,7 +579,7 @@ object formAddClients: TformAddClients
       end
       object pnlFechar: TPanel
         AlignWithMargins = True
-        Left = 373
+        Left = 556
         Top = 3
         Width = 150
         Height = 34
@@ -572,6 +597,7 @@ object formAddClients: TformAddClients
         ParentBackground = False
         ParentFont = False
         TabOrder = 1
+        ExplicitLeft = 373
         object btnFechar: TSpeedButton
           Left = 0
           Top = 0
@@ -597,6 +623,50 @@ object formAddClients: TformAddClients
           ParentBackground = False
           TabOrder = 0
           Visible = False
+        end
+      end
+      object Panel12: TPanel
+        AlignWithMargins = True
+        Left = 47
+        Top = 3
+        Width = 150
+        Height = 31
+        Margins.Left = 20
+        BevelOuter = bvNone
+        Color = 15881582
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentBackground = False
+        ParentFont = False
+        TabOrder = 2
+        object btnVoltar: TSpeedButton
+          Left = 0
+          Top = 0
+          Width = 150
+          Height = 28
+          Align = alClient
+          Caption = 'Voltar'
+          Flat = True
+          OnClick = btnVoltarClick
+          OnMouseEnter = btnVoltarMouseEnter
+          OnMouseLeave = btnVoltarMouseLeave
+          ExplicitTop = 1
+        end
+        object Panel13: TPanel
+          Left = 0
+          Top = 28
+          Width = 150
+          Height = 3
+          Align = alBottom
+          BevelOuter = bvNone
+          Color = clWhite
+          ParentBackground = False
+          TabOrder = 0
+          Visible = False
+          ExplicitTop = 78
         end
       end
     end

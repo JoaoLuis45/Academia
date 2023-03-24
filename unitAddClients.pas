@@ -48,6 +48,10 @@ type
     btnFechar: TSpeedButton;
     Panel3: TPanel;
     txtPersonais: TDBLookupComboBox;
+    Panel12: TPanel;
+    btnVoltar: TSpeedButton;
+    Panel13: TPanel;
+    lblSave: TLabel;
     procedure btnEditarMouseEnter(Sender: TObject);
     procedure btnEditarMouseLeave(Sender: TObject);
     procedure btnPersonaisMouseEnter(Sender: TObject);
@@ -60,6 +64,9 @@ type
     procedure btnFecharClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnPersonaisClick(Sender: TObject);
+    procedure btnVoltarMouseEnter(Sender: TObject);
+    procedure btnVoltarMouseLeave(Sender: TObject);
+    procedure btnVoltarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -77,24 +84,38 @@ uses UnitDM, uFuncoes, unitClientes, unitHome, unitLogin;
 
 procedure TformAddClients.btnEditarClick(Sender: TObject);
 begin
-  DM.sqlClientesdataPag.Value := Date();
-  DM.sqlClientes.Post;
-  DM.sqlClientes.Refresh;
-  dm.sqlClientes.Insert;
+  if (txtNome.Text = '') or (txtBairro.Text = '') or (txtNumCasa.Text = '')  or (txtRua.Text = '') or (txtIdade.Text = '') or (txtTelefone.Text = '')  then begin
+    ShowMessage('Preencha todos os campos!');
+  end else begin
+
+     if (checkSaude.Checked = True) and (txtProbSaude.Text = '') then begin
+        ShowMessage('Especifique o problema físico ou de saúde!');
+        exit
+     end;
+
+     if (checkComec.Checked = True)  and (txtPersonais.Text = '')then begin
+        ShowMessage('Escolha um personal para acompanhar o treino!!');
+        exit
+     end;
+
+    DM.sqlClientesdataPag.Value := Date();
+    DM.sqlClientes.Post;
+    DM.sqlClientes.Refresh;
+    DM.sqlClientes.Insert;
+    lblSave.Caption := 'Cliente Adicionado com sucesso!';
+  end;
+
+
 end;
 
 procedure TformAddClients.btnEditarMouseEnter(Sender: TObject);
 begin
-  panel6.Color := $005BA6E5;
-  panel6.Font.Style := [TFontStyle.fsBold];
-  panel7.Visible := True;
+AoEntrar(panel6,panel7)
 end;
 
 procedure TformAddClients.btnEditarMouseLeave(Sender: TObject);
 begin
-    panel6.Color := $00F2556E;
-    panel6.Font.Style := [];
-    panel7.Visible := False;
+AoSair(panel6,panel7)
 end;
 
 procedure TformAddClients.btnFecharClick(Sender: TObject);
@@ -110,16 +131,12 @@ end;
 
 procedure TformAddClients.btnFecharMouseEnter(Sender: TObject);
 begin
-    pnlFechar.Color := $005BA6E5;
-    pnlFechar.Font.Style := [];
-    panel3.Visible := False;
+AoEntrar(pnlFechar,panel3)
 end;
 
 procedure TformAddClients.btnFecharMouseLeave(Sender: TObject);
 begin
-    pnlFechar.Color := $00F2556E;
-    pnlFechar.Font.Style := [];
-    panel3.Visible := False;
+AoSair(pnlFechar,panel3)
 end;
 
 procedure TformAddClients.btnPersonaisClick(Sender: TObject);
@@ -133,16 +150,28 @@ end;
 
 procedure TformAddClients.btnPersonaisMouseEnter(Sender: TObject);
 begin
-    pnlPersonais.Color := $005BA6E5;
-    pnlPersonais.Font.Style := [];
-    panel2.Visible := False;
+AoEntrar(pnlPersonais,panel2)
 end;
 
 procedure TformAddClients.btnPersonaisMouseLeave(Sender: TObject);
 begin
-    pnlPersonais.Color := $00F2556E;
-    pnlPersonais.Font.Style := [];
-    panel2.Visible := False;
+AoSair(pnlPersonais,panel2)
+end;
+
+procedure TformAddClients.btnVoltarClick(Sender: TObject);
+begin
+  DM.sqlClientes.Cancel;
+  formAddClients.Close;
+end;
+
+procedure TformAddClients.btnVoltarMouseEnter(Sender: TObject);
+begin
+AoEntrar(panel12,panel13)
+end;
+
+procedure TformAddClients.btnVoltarMouseLeave(Sender: TObject);
+begin
+aoSair(panel12,panel13)
 end;
 
 procedure TformAddClients.checkSaudeClick(Sender: TObject);
@@ -161,6 +190,7 @@ begin
     pnlPersonais.Visible := True;
   end else begin
     pnlPersonais.Visible := False;
+    txtPersonais.Visible := False;
   end;
 
 
@@ -197,6 +227,9 @@ MakeRounded(pnlTelefone);
 MakeRounded(pnlPersonais);
 MakeRounded(pnlRua);
 MakeRounded(pnlSaude);
+MakeRounded(panel12);
+lblSave.Caption := '';
+txtNome.SetFocus;
 end;
 
 end.

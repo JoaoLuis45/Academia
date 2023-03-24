@@ -12,6 +12,7 @@ object formAddPersonal: TformAddPersonal
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnShow = FormShow
   TextHeight = 15
   object pnlPrincipal: TPanel
     Left = 0
@@ -325,7 +326,7 @@ object formAddPersonal: TformAddPersonal
         ParentFont = False
         TabOrder = 0
         ExplicitLeft = 552
-        object btnEditar: TSpeedButton
+        object btnAddPersonal: TSpeedButton
           Left = 0
           Top = 0
           Width = 150
@@ -333,9 +334,9 @@ object formAddPersonal: TformAddPersonal
           Align = alClient
           Caption = 'Adicionar Personal'
           Flat = True
-          OnClick = btnEditarClick
-          OnMouseEnter = btnEditarMouseEnter
-          OnMouseLeave = btnEditarMouseLeave
+          OnClick = btnAddPersonalClick
+          OnMouseEnter = btnAddPersonalMouseEnter
+          OnMouseLeave = btnAddPersonalMouseLeave
           ExplicitWidth = 200
           ExplicitHeight = 71
         end
@@ -398,6 +399,50 @@ object formAddPersonal: TformAddPersonal
           ParentBackground = False
           TabOrder = 0
           Visible = False
+        end
+      end
+      object Panel12: TPanel
+        AlignWithMargins = True
+        Left = 28
+        Top = 3
+        Width = 150
+        Height = 31
+        Margins.Left = 20
+        BevelOuter = bvNone
+        Color = 15881582
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentBackground = False
+        ParentFont = False
+        TabOrder = 2
+        object btnVoltar: TSpeedButton
+          Left = 0
+          Top = 0
+          Width = 150
+          Height = 28
+          Align = alClient
+          Caption = 'Voltar'
+          Flat = True
+          OnClick = btnVoltarClick
+          OnMouseEnter = btnVoltarMouseEnter
+          OnMouseLeave = btnVoltarMouseLeave
+          ExplicitHeight = 31
+        end
+        object Panel13: TPanel
+          Left = 0
+          Top = 28
+          Width = 150
+          Height = 3
+          Align = alBottom
+          BevelOuter = bvNone
+          Color = clWhite
+          ParentBackground = False
+          TabOrder = 0
+          Visible = False
+          ExplicitTop = 78
         end
       end
     end

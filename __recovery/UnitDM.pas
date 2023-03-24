@@ -18,13 +18,35 @@ type
     dsClientes: TDataSource;
     sqlPersonais: TFDQuery;
     dsPersonais: TDataSource;
+    sqlPersonaisid: TFDAutoIncField;
+    sqlPersonaisnome: TStringField;
+    sqlPersonaisidade: TIntegerField;
+    sqlPersonaistelefone: TStringField;
+    sqlPersonaisimagem: TStringField;
+    sqlQtdAlunos: TFDQuery;
+    sqlPagamentos: TFDQuery;
+    dsPagamentos: TDataSource;
+    sqlPagamentosid: TFDAutoIncField;
+    sqlPagamentosid_cliente: TIntegerField;
+    sqlPagamentosvalor: TBCDField;
+    sqlPagamentosdata_pag: TDateField;
+    sqlPagamentostipo: TStringField;
+    sqlPagamentosNomeCliente: TStringField;
+    sqlPagFunc: TFDQuery;
+    dsPagFunc: TDataSource;
+    sqlPagFuncid: TFDAutoIncField;
+    sqlPagFuncid_func: TIntegerField;
+    sqlPagFuncdata_pag: TDateField;
+    sqlPagFuncvalor: TBCDField;
+    sqlPagFunctipo: TStringField;
+    sqlPagFuncNomeFunc: TStringField;
     sqlClientesid: TFDAutoIncField;
     sqlClientesnome: TStringField;
     sqlClientestelefone: TStringField;
     sqlClientesdataPag: TDateField;
     sqlClientesrua: TStringField;
     sqlClientesbairro: TStringField;
-    sqlClientesnum: TIntegerField;
+    sqlClientesnum: TStringField;
     sqlClientesemail: TStringField;
     sqlClientesidade: TIntegerField;
     sqlClientesprob_saude: TStringField;
@@ -32,12 +54,7 @@ type
     sqlClientescomec_agr: TBooleanField;
     sqlClientesacomp: TBooleanField;
     sqlClientesid_personal: TIntegerField;
-    sqlPersonaisid: TFDAutoIncField;
-    sqlPersonaisnome: TStringField;
-    sqlPersonaisidade: TIntegerField;
-    sqlPersonaistelefone: TStringField;
-    sqlPersonaisimagem: TStringField;
-    sqlQtdAlunos: TFDQuery;
+    sqlClientespersonalCliente: TStringField;
     procedure dsPersonaisDataChange(Sender: TObject; Field: TField);
   private
     { Private declarations }
@@ -59,16 +76,30 @@ uses unitLogin, uFuncoes, unitAddClients, unitaddPersonais, unitClientes,
 
 procedure TDM.dsPersonaisDataChange(Sender: TObject; Field: TField);
 begin
-  if sqlPersonais.State in [dsBrowse] then begin
-      formPersonais.imgPersonal.Picture.LoadFromFile(sqlPersonais.FieldByName('imagem').Value);
-      formPersonais.lblNome.Caption := sqlPersonais.FieldByName('nome').Value;
-      formPersonais.lblIdade.Caption := sqlPersonais.FieldByName('idade').Value;
-      formPersonais.lblTel.Caption := sqlPersonais.FieldByName('telefone').Value;
-      sqlQtdAlunos.SQL.Clear;
-      sqlQtdAlunos.SQL.Text := 'SELECT * FROM clientes WHERE id_personal = :pPersonal';
-      sqlQtdAlunos.ParamByName('pPersonal').Value := sqlPersonais.FieldByName('id').Value;
-      sqlQtdAlunos.Open();
-      formPersonais.lblQtdAlunos.Caption := IntToStr(sqlQtdAlunos.RecordCount);
+  if (formPersonais <> nil)  then begin
+    if (sqlPersonais.State in [dsInsert])  or (sqlPersonais.State in [dsEdit])then begin
+        exit
+    end else begin
+        if (sqlPersonais.FieldByName('imagem').Value = '') or (DM.sqlPersonais.IsEmpty = True) then begin
+          formPersonais.lblNome.Caption := '';
+          formPersonais.lblIdade.Caption := '';
+          formPersonais.lblTel.Caption := '';
+          formPersonais.lblQtdAlunos.Caption := '';
+          formPersonais.imgPersonal.Picture := nil;
+        end else begin
+          formPersonais.imgPersonal.Picture.LoadFromFile(sqlPersonais.FieldByName('imagem').Value);
+          formPersonais.lblNome.Caption := sqlPersonais.FieldByName('nome').Value;
+          formPersonais.lblIdade.Caption := sqlPersonais.FieldByName('idade').Value;
+          formPersonais.lblTel.Caption := sqlPersonais.FieldByName('telefone').Value;
+          sqlQtdAlunos.SQL.Clear;
+          sqlQtdAlunos.SQL.Text := 'SELECT * FROM clientes WHERE id_personal = :pPersonal';
+          sqlQtdAlunos.ParamByName('pPersonal').Value := sqlPersonais.FieldByName('id').Value;
+          sqlQtdAlunos.Open();
+          formPersonais.lblQtdAlunos.Caption := IntToStr(sqlQtdAlunos.RecordCount);
+        end;
+
+    end;
+
   end;
 end;
 

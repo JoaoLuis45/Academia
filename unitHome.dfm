@@ -1,7 +1,6 @@
 object formHome: TformHome
   Left = 0
   Top = 0
-  BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
   Caption = 'Tela Inicial'
   ClientHeight = 566
@@ -13,7 +12,9 @@ object formHome: TformHome
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poDefault
+  Visible = True
   WindowState = wsMaximized
+  OnCreate = FormCreate
   TextHeight = 15
   object formMain: TPanel
     Left = 0
@@ -828,12 +829,13 @@ object formHome: TformHome
       TabStop = True
       object Panel1: TPanel
         Left = 0
-        Top = 240
+        Top = 369
         Width = 40
         Height = 60
-        Align = alTop
+        Align = alBottom
         BevelOuter = bvNone
         TabOrder = 0
+        ExplicitTop = 240
         object btnSair: TSpeedButton
           Left = 2
           Top = 0
@@ -1311,6 +1313,128 @@ object formHome: TformHome
           Left = 0
           Top = 58
           Width = 185
+          Height = 2
+          Align = alBottom
+          BevelOuter = bvNone
+          Color = 15881582
+          ParentBackground = False
+          TabOrder = 0
+          Visible = False
+        end
+      end
+    end
+    object pnlPaymentExtends: TPanel
+      Left = 170
+      Top = 257
+      Width = 200
+      Height = 182
+      BevelOuter = bvNone
+      Color = clWhite
+      ParentBackground = False
+      TabOrder = 6
+      Visible = False
+      object Panel19: TPanel
+        Left = 0
+        Top = 120
+        Width = 200
+        Height = 60
+        Align = alTop
+        BevelOuter = bvNone
+        TabOrder = 0
+        object btnReceberPagamento: TSpeedButton
+          Left = 0
+          Top = 0
+          Width = 200
+          Height = 58
+          Align = alClient
+          Caption = 'Receber Pagamento'
+          Flat = True
+          Margin = 10
+          Spacing = 15
+          OnClick = btnReceberPagamentoClick
+          OnMouseEnter = btnReceberPagamentoMouseEnter
+          OnMouseLeave = btnReceberPagamentoMouseLeave
+          ExplicitTop = 1
+          ExplicitWidth = 185
+        end
+        object Panel21: TPanel
+          Left = 0
+          Top = 58
+          Width = 200
+          Height = 2
+          Align = alBottom
+          BevelOuter = bvNone
+          Color = 15881582
+          ParentBackground = False
+          TabOrder = 0
+          Visible = False
+        end
+      end
+      object Panel7: TPanel
+        Left = 0
+        Top = 0
+        Width = 200
+        Height = 60
+        Align = alTop
+        BevelOuter = bvNone
+        TabOrder = 1
+        object btnPagarFunc: TSpeedButton
+          Left = 0
+          Top = 0
+          Width = 200
+          Height = 58
+          Align = alClient
+          Caption = 'Pagar Funcion'#225'rios'
+          Flat = True
+          Margin = 10
+          Spacing = 15
+          OnClick = btnPagarFuncClick
+          OnMouseEnter = btnPagarFuncMouseEnter
+          OnMouseLeave = btnPagarFuncMouseLeave
+          ExplicitTop = 1
+          ExplicitWidth = 185
+        end
+        object Panel23: TPanel
+          Left = 0
+          Top = 58
+          Width = 200
+          Height = 2
+          Align = alBottom
+          BevelOuter = bvNone
+          Color = 15881582
+          ParentBackground = False
+          TabOrder = 0
+          Visible = False
+        end
+      end
+      object Panel24: TPanel
+        Left = 0
+        Top = 60
+        Width = 200
+        Height = 60
+        Align = alTop
+        BevelOuter = bvNone
+        TabOrder = 2
+        object btnPagReal: TSpeedButton
+          Left = 0
+          Top = 0
+          Width = 200
+          Height = 58
+          Align = alClient
+          Caption = 'Pagamentos Realizados'
+          Flat = True
+          Margin = 10
+          Spacing = 15
+          OnClick = btnPagRealClick
+          OnMouseEnter = btnPagRealMouseEnter
+          OnMouseLeave = btnPagRealMouseLeave
+          ExplicitTop = 1
+          ExplicitWidth = 185
+        end
+        object Panel25: TPanel
+          Left = 0
+          Top = 58
+          Width = 200
           Height = 2
           Align = alBottom
           BevelOuter = bvNone

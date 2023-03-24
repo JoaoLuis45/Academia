@@ -1,0 +1,286 @@
+unit unitRealPag;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.DBCtrls, Vcl.StdCtrls, Vcl.Mask,
+  Vcl.ExtCtrls, SWHDBEdit, Vcl.Buttons, Vcl.Imaging.pngimage;
+
+type
+  TformRealPag = class(TForm)
+    pnlPrincipal: TPanel;
+    pnlTop: TPanel;
+    imgIconForm: TImage;
+    Label1: TLabel;
+    pnlButtons: TPanel;
+    pnlFormasDePagamento: TPanel;
+    Panel1: TPanel;
+    btnDinheiro: TSpeedButton;
+    Panel6: TPanel;
+    Panel2: TPanel;
+    btnCartao: TSpeedButton;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    btnPix: TSpeedButton;
+    Panel5: TPanel;
+    pnlFormaPag: TPanel;
+    pnlTopPag: TPanel;
+    imgLogoPix: TImage;
+    imgLogoDinheiro: TImage;
+    imgLogoCartao: TImage;
+    lblTipoPag: TLabel;
+    pnlData: TPanel;
+    lblData: TLabel;
+    txtData: TSWHDBEdit;
+    pnlValor: TPanel;
+    lblValor: TLabel;
+    txtValor: TSWHDBEdit;
+    pnlName: TPanel;
+    lblName: TLabel;
+    txrName: TDBLookupComboBox;
+    pnlPagar: TPanel;
+    btnPagar: TSpeedButton;
+    Panel8: TPanel;
+    pnlBottom: TPanel;
+    Panel10: TPanel;
+    btnFechar: TSpeedButton;
+    Panel11: TPanel;
+    procedure FormShow(Sender: TObject);
+    procedure btnPixMouseEnter(Sender: TObject);
+    procedure btnPixMouseLeave(Sender: TObject);
+    procedure btnDinheiroMouseEnter(Sender: TObject);
+    procedure btnDinheiroMouseLeave(Sender: TObject);
+    procedure btnCartaoMouseEnter(Sender: TObject);
+    procedure btnCartaoMouseLeave(Sender: TObject);
+    procedure btnPagarMouseEnter(Sender: TObject);
+    procedure btnPagarMouseLeave(Sender: TObject);
+    procedure btnPixClick(Sender: TObject);
+    procedure btnDinheiroClick(Sender: TObject);
+    procedure btnCartaoClick(Sender: TObject);
+    procedure btnPagarClick(Sender: TObject);
+    procedure btnFecharMouseEnter(Sender: TObject);
+    procedure btnFecharMouseLeave(Sender: TObject);
+    procedure btnFecharClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  formRealPag: TformRealPag;
+
+implementation
+
+{$R *.dfm}
+
+uses uFuncoes, unitAddClients, unitaddPersonais, unitClientes, UnitDM, unitHome,
+  unitLogin, unitPagamentos, unitPagFunc, unitPersonais, unitReceberPagamentos;
+procedure MakeRounded(Control: TWinControl);
+var
+R: TRect;
+Rgn: HRGN;
+begin
+with Control do
+begin
+ R := ClientRect;
+ rgn := CreateRoundRectRgn(R.Left, R.Top, R.Right, R.Bottom, 10, 10);
+ Perform(EM_GETRECT, 0, lParam(@r));
+ InflateRect(r, - 5, - 5);
+ Perform(EM_SETRECTNP, 0, lParam(@r));
+ SetWindowRgn(Handle, rgn, True);
+ Invalidate;
+end;
+end;
+
+
+{ TformRealPag }
+
+procedure TformRealPag.btnCartaoClick(Sender: TObject);
+begin
+    if pnlFormaPag.Visible = False then begin
+      pnlFormaPag.Visible := True;
+      lblTipoPag.Caption := 'Cartão';
+      imgLogoCartao.Visible := True;
+      imgLogoDinheiro.Visible := False;
+      imgLogoPix.Visible := False;
+      DM.sqlPagFunc.Insert;
+  end else begin
+      if lblTipoPag.Caption = 'Cartão' then begin
+        pnlFormaPag.Visible := False
+
+      end
+      else begin
+      pnlFormaPag.Visible := False;
+      pnlFormaPag.Visible := True;
+      lblTipoPag.Caption := 'Cartão';
+      imgLogoCartao.Visible := True;
+      imgLogoDinheiro.Visible := False;
+      imgLogoPix.Visible := False;
+      DM.sqlPagFunc.Insert;
+      end;
+  end;
+end;
+
+procedure TformRealPag.btnCartaoMouseEnter(Sender: TObject);
+begin
+  panel2.Color := $005BA6E5;
+  panel2.Font.Style := [TFontStyle.fsBold];
+  panel3.Visible := True;
+end;
+
+procedure TformRealPag.btnCartaoMouseLeave(Sender: TObject);
+begin
+    panel2.Color := $00F2556E;
+    panel2.Font.Style := [];
+    panel3.Visible := False;
+end;
+
+procedure TformRealPag.btnDinheiroClick(Sender: TObject);
+begin
+    if pnlFormaPag.Visible = False then begin
+      pnlFormaPag.Visible := True;
+      lblTipoPag.Caption := 'Dinheiro';
+      imgLogoDinheiro.Visible := True;
+      imgLogoPix.Visible := False;
+      imgLogoCartao.Visible := False;
+      DM.sqlPagFunc.Insert;
+  end else begin
+      if lblTipoPag.Caption = 'Dinheiro' then begin
+        pnlFormaPag.Visible := False
+
+      end
+      else begin
+      pnlFormaPag.Visible := False;
+      pnlFormaPag.Visible := True;
+      lblTipoPag.Caption := 'Dinheiro';
+      imgLogoCartao.Visible := False;
+      imgLogoDinheiro.Visible := True;
+      imgLogoPix.Visible := False;
+      DM.sqlPagFunc.Insert;
+      end;
+
+  end;
+end;
+
+procedure TformRealPag.btnDinheiroMouseEnter(Sender: TObject);
+begin
+  panel1.Color := $005BA6E5;
+  panel1.Font.Style := [TFontStyle.fsBold];
+  panel6.Visible := True;
+end;
+
+procedure TformRealPag.btnDinheiroMouseLeave(Sender: TObject);
+begin
+    panel1.Color := $00F2556E;
+    panel1.Font.Style := [];
+    panel6.Visible := False;
+end;
+
+procedure TformRealPag.btnFecharClick(Sender: TObject);
+begin
+  DM.sqlPagFunc.Cancel;
+  formRealPag.Close;
+  formPagFunc:= TformPagFunc.Create(self);
+  formPagFunc.Parent := FormHome.pnlForms;
+  formPagFunc.Align := alClient;
+  formPagFunc.BorderStyle := bsNone;
+  formPagFunc.Show;
+end;
+
+procedure TformRealPag.btnFecharMouseEnter(Sender: TObject);
+begin
+ panel10.Color := $005BA6E5;
+  panel10.Font.Style := [TFontStyle.fsBold];
+  panel11.Visible := True;
+end;
+
+procedure TformRealPag.btnFecharMouseLeave(Sender: TObject);
+begin
+    panel10.Color := $00F2556E;
+    panel10.Font.Style := [];
+    panel11.Visible := False;
+end;
+
+procedure TformRealPag.btnPagarClick(Sender: TObject);
+begin
+  if imgLogoPix.Visible = True then
+    DM.sqlPagFunc.FieldByName('tipo').Value := 'Pix';
+  if imgLogoDinheiro.Visible = True then
+    DM.sqlPagFunc.FieldByName('tipo').Value := 'Dinheiro';
+  if imgLogoCartao.Visible = True then
+    DM.sqlPagFunc.FieldByName('tipo').Value := 'Cartão';
+  DM.sqlPagFunc.Post;
+  DM.sqlPagFunc.Refresh;
+  DM.sqlPagFunc.Insert;
+end;
+
+procedure TformRealPag.btnPagarMouseEnter(Sender: TObject);
+begin
+  pnlPagar.Color := $005BA6E5;
+  pnlPagar.Font.Style := [TFontStyle.fsBold];
+  panel8.Visible := True;
+end;
+
+procedure TformRealPag.btnPagarMouseLeave(Sender: TObject);
+begin
+    pnlPagar.Color := $00F2556E;
+    pnlPagar.Font.Style := [];
+    panel8.Visible := False;
+end;
+
+procedure TformRealPag.btnPixClick(Sender: TObject);
+begin
+begin
+  if pnlFormaPag.Visible = False then begin
+      pnlFormaPag.Visible := True;
+      lblTipoPag.Caption := 'Pix';
+      imgLogoPix.Visible := True;
+      imgLogoDinheiro.Visible := False;
+      imgLogoCartao.Visible := False;
+      DM.sqlPagFunc.Insert;
+  end else begin
+      if lblTipoPag.Caption = 'Pix' then begin
+        pnlFormaPag.Visible := False
+
+      end
+      else begin
+      pnlFormaPag.Visible := False;
+      pnlFormaPag.Visible := True;
+      lblTipoPag.Caption := 'Pix';
+      imgLogoCartao.Visible := False;
+      imgLogoDinheiro.Visible := False;
+      imgLogoPix.Visible := True;
+      DM.sqlPagFunc.Insert;
+      end;
+
+  end;
+
+end;
+end;
+
+procedure TformRealPag.btnPixMouseEnter(Sender: TObject);
+begin
+  panel4.Color := $005BA6E5;
+  panel4.Font.Style := [TFontStyle.fsBold];
+  panel5.Visible := True;
+end;
+
+procedure TformRealPag.btnPixMouseLeave(Sender: TObject);
+begin
+    panel4.Color := $00F2556E;
+    panel4.Font.Style := [];
+    panel5.Visible := False;
+end;
+
+procedure TformRealPag.FormShow(Sender: TObject);
+begin
+MakeRounded(panel1);
+MakeRounded(panel2);
+MakeRounded(panel4);
+MakeRounded(pnlPagar);
+MakeRounded(panel10);
+end;
+
+end.
