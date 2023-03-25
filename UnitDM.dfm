@@ -27,6 +27,7 @@ object DM: TDM
     Top = 256
     object sqlClientesid: TFDAutoIncField
       FieldName = 'id'
+      ReadOnly = True
     end
     object sqlClientesnome: TStringField
       FieldName = 'nome'
@@ -60,6 +61,8 @@ object DM: TDM
     end
     object sqlClientesidade: TIntegerField
       FieldName = 'idade'
+      MaxValue = 100
+      MinValue = 1
     end
     object sqlClientesprob_saude: TStringField
       FieldName = 'prob_saude'
@@ -116,11 +119,14 @@ object DM: TDM
       AutoGenerateValue = arDefault
       FieldName = 'idade'
       Origin = 'idade'
+      MaxValue = 60
+      MinValue = 18
     end
     object sqlPersonaistelefone: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'telefone'
       Origin = 'telefone'
+      EditMask = '(##) # ####-####;1;_'
       Size = 16
     end
     object sqlPersonaisimagem: TStringField

@@ -95,6 +95,7 @@ end;
 
 procedure TformPagFunc.btnCancelarClick(Sender: TObject);
 begin
+      DM.sqlPagFunc.Cancel;
       DM.sqlPagFunc.Refresh;
       formPagFunc.Close;
       formPagFunc:= TformPagFunc.Create(self);
@@ -163,11 +164,15 @@ end;
 
 procedure TformPagFunc.btnReceberPagamentoClick(Sender: TObject);
 begin
+    if DM.sqlPersonais.IsEmpty = True then begin
+      ShowMessage('Não existem funcionários cadastrados!')
+    end else begin
     formRealPag:= TformRealPag.Create(self);
     formRealPag.Parent := formHome.pnlForms;
     formRealPag.Align := alClient;
     formRealPag.BorderStyle := bsNone;
     formRealPag.Show;
+    end;
 end;
 
 procedure TformPagFunc.btnReceberPagamentoMouseEnter(Sender: TObject);

@@ -95,7 +95,6 @@ end;
 
 procedure TformPagFunc.btnCancelarClick(Sender: TObject);
 begin
-      DM.sqlPagFunc.Cancel;
       DM.sqlPagFunc.Refresh;
       formPagFunc.Close;
       formPagFunc:= TformPagFunc.Create(self);
@@ -118,7 +117,7 @@ end;
 procedure TformPagFunc.btnEditarClick(Sender: TObject);
 begin
   if DM.sqlPagamentos.IsEmpty then begin
-    ShowMessage('A tabela est√° vazia!');
+    ShowMessage('A tabela est· vazia!');
   end else begin
     DM.sqlPagFunc.Close;
     DM.sqlPagFunc.Open();
@@ -145,9 +144,9 @@ end;
 procedure TformPagFunc.btnExcluirPagamentoClick(Sender: TObject);
 begin
   if DM.sqlPagFunc.IsEmpty then begin
-    ShowMessage('A tabela j√° est√° vazia!');
+    ShowMessage('A tabela j· est· vazia!');
   end else
-  if Application.MessageBox('Deseja realmente Excluir esse Pagamento?','Aten√ß√£o',MB_ICONEXCLAMATION+MB_OKCANCEL) = mrOk then begin
+  if Application.MessageBox('Deseja realmente Excluir esse Pagamento?','AtenÁ„o',MB_ICONEXCLAMATION+MB_OKCANCEL) = mrOk then begin
     DM.sqlPagFunc.Delete;
   end;
 end;
@@ -164,15 +163,11 @@ end;
 
 procedure TformPagFunc.btnReceberPagamentoClick(Sender: TObject);
 begin
-    if DM.sqlPersonais.IsEmpty = True then begin
-      ShowMessage('N√£o existem funcion√°rios cadastrados!')
-    end else begin
     formRealPag:= TformRealPag.Create(self);
     formRealPag.Parent := formHome.pnlForms;
     formRealPag.Align := alClient;
     formRealPag.BorderStyle := bsNone;
     formRealPag.Show;
-    end;
 end;
 
 procedure TformPagFunc.btnReceberPagamentoMouseEnter(Sender: TObject);
@@ -275,7 +270,7 @@ begin
   end else
     gridPagFunc.Canvas.Brush.Color := clWhite;
 
-  //mudando a cor da sele√ß√£o
+  //mudando a cor da seleÁ„o
   if (gdSelected in State) then
     begin
       gridPagFunc.Canvas.Brush.Color := $005BA6E5;
@@ -286,7 +281,7 @@ begin
     gridPagFunc.Canvas.FillRect(rect);
     gridPagFunc.DefaultDrawColumnCell(Rect, DataCol, Column, State);
 
-  //mudando a posi√ß√£o e alinhamento vertical do texto de cadalinha
+  //mudando a posiÁ„o e alinhamento vertical do texto de cadalinha
   gridPagFunc.Canvas.TextRect(Rect, rect.Left + 8, rect.Top + 8, Column.Field.DisplayText);
 end;
 

@@ -32,6 +32,8 @@ type
     txtPassword: TEdit1;
     pnlBorderTop: TPanel;
     logoDev: TImage;
+    pnlClose: TPanel;
+    btnClose: TSpeedButton;
     procedure btnEntrarMouseEnter(Sender: TObject);
     procedure btnEntrarMouseLeave(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -39,6 +41,7 @@ type
     procedure txtPasswordKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure Entrar();
+    procedure btnCloseClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -69,6 +72,11 @@ begin
  SetWindowRgn(Handle, rgn, True);
  Invalidate;
 end;
+end;
+
+procedure TformLogin.btnCloseClick(Sender: TObject);
+begin
+Application.Terminate;
 end;
 
 procedure TformLogin.btnEntrarClick(Sender: TObject);

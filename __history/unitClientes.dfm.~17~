@@ -1,10 +1,9 @@
-object formPagFunc: TformPagFunc
+object formClientes: TformClientes
   Left = 0
   Top = 0
   BorderStyle = bsSingle
-  Caption = 'formPagFunc'
-  ClientHeight = 441
-  ClientWidth = 891
+  ClientHeight = 440
+  ClientWidth = 1055
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,24 +18,22 @@ object formPagFunc: TformPagFunc
   object pnlPrincipal: TPanel
     Left = 0
     Top = 0
-    Width = 891
-    Height = 441
+    Width = 1055
+    Height = 440
     Align = alClient
     BevelOuter = bvNone
     Color = 14077653
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 887
-    ExplicitHeight = 440
     object pnlTop: TPanel
       Left = 0
       Top = 0
-      Width = 891
+      Width = 1059
       Height = 57
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 0
-      ExplicitWidth = 887
+      ExplicitWidth = 1055
       object imgIconForm: TImage
         Left = 0
         Top = 0
@@ -45,38 +42,32 @@ object formPagFunc: TformPagFunc
         Align = alLeft
         Center = True
         Picture.Data = {
-          0954506E67496D61676589504E470D0A1A0A0000000D49484452000000200000
-          00200806000000737A7AF4000000097048597300000B1300000B1301009A9C18
-          000000017352474200AECE1CE90000000467414D410000B18F0BFC6105000002
-          454944415478DABD978D71C2300C85C50465843041C304A413B49DA030013001
-          6102E8040D135026204C5036209D0098805AE41984B1839D1EBC3BDD99FCD89F
-          9F653934284C4D1503157DB473153D1545603F2735029FFF51115BAEBF00E6AE
-          005D155F8E7BEC40EBDE0072F6530C9A52B914B55D08013858663B02048B73E3
-          F3D1007DB8410019A3AD93F503ED6FDC2BFE03B05111A1CD9DAD554CC4B53715
-          0BB46DC9BAA37299D67501A4DDA6A42B299EB52907442D8026661659EEBD5369
-          B3E95406B8019D93B52D5D08AD031166D7C56FEE682C06E741B61657268020BC
-          3BAB0B20DD7852F16B01DC08B836DA3259AD00B1B0482BAF09B7157D0DE1844C
-          D644C54A02CCA9CC605372062192769B62988B8AC900878ACE74C55B91B17D2A
-          E49BAC5E00267D4A62FD2AC483F3B991E037D7809E39B80950E0057E28AEE89C
-          5D1906B8614B562700AFCF5290170E2B4DADE9BC250B4F382F8008F45D2AF7FF
-          2D18EEE39DFCF3C51B402BA3F280A912AFF7D4717D613A140AC07AA5EB9A91D0
-          B93ADE12E798AE0FB5005C4AF0AE8F78ACE3528500441E1D73C9D545688720C7
-          FB3C5E3B04C0B75E686554EE7D2D5EB62E9595F2F4CC3D017232CE7EF4B7146E
-          148F04300767B56E0170B6EA2DD50904D8D3B91E70659D1B831F3F626F01B032
-          AA51E120FD716A7EA2A5E833E830629019F97D27987FE1AC83870268ED606D8E
-          F61ED7F9D089E05EEC78EFEA446400D372AD02B34E03016DCAC9F127B601EA67
-          8B550B50F3FD1120A31A03F30456AE07423F4A3B0049001C09F01D66A88FE619
-          5D5642ABFE00B299BCCFA50ED0630000000049454E44AE426082}
+          0954506E67496D61676589504E470D0A1A0A0000000D494844520000001E0000
+          00160806000000D7632CCF000000097048597300000B1300000B1301009A9C18
+          000000017352474200AECE1CE90000000467414D410000B18F0BFC6105000001
+          784944415478DAB5968151C2401045371D840E4205C60A8C1DD881D88154C059
+          8152015081630568056005860A4C09EE1FFE11C4DCED05E29FF99300977BBB7B
+          7B1732194613F5BDBAE2E7ADFA45BD0A3D900D005D121AFAEDA10FB8502FD4A5
+          3A8F64E0D43323B0299F35C1806E083CD513615E5F1C1F53A31EA580D7D2AE55
+          97469CAC20384518BB8B8191E5B731C9A37A3E3438653227FB920B83CCC55666
+          7D91131C9BEC4EFDC67B6B59A0A57474F6396B3C56D7BC47D76F0CF0F1F828B8
+          9070573B69CBEC85357F0E407D3FFC516C1FAFA5DD2A0DA1F3C0F892F08A63B7
+          1CFF112A83757295BCD69C703085C088FC8A19E7047F3293FA3FC0589399C4BB
+          1AC7DFF42840F8864116FCDE971B5EF1DA0906E855ECADD13038ACDD2261BCD7
+          BBECB7D4A15A1E8C2E2E1326B896B691520E8E531D5E18004F18BD2564BA6365
+          2E1178AB2C315B94E8567E6FB17385E51A039C72DE22CA8AD721E40046173B2B
+          4256E6D26CBDEA3E7F7D52DF44296AFA806367722FA8DAFD00330954E3F01F60
+          B10000000049454E44AE426082}
       end
       object Label1: TLabel
         AlignWithMargins = True
         Left = 68
         Top = 20
-        Width = 213
+        Width = 69
         Height = 34
         Margins.Top = 20
         Align = alLeft
-        Caption = 'Pagamentos  Realizados'
+        Caption = 'Clientes'
         Color = clBlack
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 5395028
@@ -91,12 +82,56 @@ object formPagFunc: TformPagFunc
     object pnlButtons: TPanel
       Left = 0
       Top = 57
-      Width = 891
+      Width = 1059
       Height = 80
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitWidth = 887
+      ExplicitWidth = 1055
+      object panel1: TPanel
+        AlignWithMargins = True
+        Left = 810
+        Top = 3
+        Width = 200
+        Height = 74
+        Margins.Left = 40
+        Margins.Right = 40
+        Align = alLeft
+        BevelOuter = bvNone
+        Color = 12225536
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentBackground = False
+        ParentFont = False
+        TabOrder = 0
+        object btnPayment: TSpeedButton
+          Left = 0
+          Top = 0
+          Width = 200
+          Height = 71
+          Align = alClient
+          Caption = 'Pagamentos Realizados'
+          Flat = True
+          OnClick = btnPaymentClick
+          OnMouseEnter = btnPaymentMouseEnter
+          OnMouseLeave = btnPaymentMouseLeave
+        end
+        object pnlborder1: TPanel
+          Left = 0
+          Top = 71
+          Width = 200
+          Height = 3
+          Align = alBottom
+          BevelOuter = bvNone
+          Color = clWhite
+          ParentBackground = False
+          TabOrder = 0
+          Visible = False
+        end
+      end
       object Panel2: TPanel
         AlignWithMargins = True
         Left = 530
@@ -115,18 +150,18 @@ object formPagFunc: TformPagFunc
         Font.Style = []
         ParentBackground = False
         ParentFont = False
-        TabOrder = 0
-        object btnExcluirPagamento: TSpeedButton
+        TabOrder = 1
+        object btnRemoveClient: TSpeedButton
           Left = 0
           Top = 0
           Width = 200
           Height = 71
           Align = alClient
-          Caption = 'Excluir Pagamento'
+          Caption = 'Remover Cliente'
           Flat = True
-          OnClick = btnExcluirPagamentoClick
-          OnMouseEnter = btnExcluirPagamentoMouseEnter
-          OnMouseLeave = btnExcluirPagamentoMouseLeave
+          OnClick = btnRemoveClientClick
+          OnMouseEnter = btnRemoveClientMouseEnter
+          OnMouseLeave = btnRemoveClientMouseLeave
           ExplicitLeft = -16
           ExplicitWidth = 150
         end
@@ -161,18 +196,18 @@ object formPagFunc: TformPagFunc
         Font.Style = []
         ParentBackground = False
         ParentFont = False
-        TabOrder = 1
-        object btnReceberPagamento: TSpeedButton
+        TabOrder = 2
+        object btnAddClient: TSpeedButton
           Left = 0
           Top = 0
           Width = 200
           Height = 71
           Align = alClient
-          Caption = 'Realizar  Pagamento'
+          Caption = 'Adicionar Cliente'
           Flat = True
-          OnClick = btnReceberPagamentoClick
-          OnMouseEnter = btnReceberPagamentoMouseEnter
-          OnMouseLeave = btnReceberPagamentoMouseLeave
+          OnClick = btnAddClientClick
+          OnMouseEnter = btnAddClientMouseEnter
+          OnMouseLeave = btnAddClientMouseLeave
         end
         object Panel5: TPanel
           Left = 0
@@ -191,23 +226,23 @@ object formPagFunc: TformPagFunc
     object pnlGrid: TPanel
       Left = 0
       Top = 137
-      Width = 891
+      Width = 1059
       Height = 254
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 2
-      ExplicitWidth = 887
+      ExplicitWidth = 1055
       ExplicitHeight = 253
-      object gridPagFunc: TDBGrid
+      object gridClients: TDBGrid
         Left = 0
         Top = 0
-        Width = 891
+        Width = 1059
         Height = 254
         Align = alClient
         BiDiMode = bdLeftToRight
         BorderStyle = bsNone
         Color = clWhite
-        DataSource = DM.dsPagFunc
+        DataSource = DM.dsClientes
         DrawingStyle = gdsClassic
         FixedColor = 15881582
         Font.Charset = DEFAULT_CHARSET
@@ -215,7 +250,7 @@ object formPagFunc: TformPagFunc
         Font.Height = -12
         Font.Name = 'Segoe UI'
         Font.Style = [fsBold]
-        Options = [dgTitles, dgColLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgTitleClick, dgTitleHotTrack]
+        Options = [dgTitles, dgColLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
         ParentBiDiMode = False
         ParentFont = False
         TabOrder = 0
@@ -224,35 +259,34 @@ object formPagFunc: TformPagFunc
         TitleFont.Height = -15
         TitleFont.Name = 'Segoe UI'
         TitleFont.Style = [fsBold]
-        OnDrawColumnCell = gridPagFuncDrawColumnCell
+        OnDrawColumnCell = gridClientsDrawColumnCell
         Columns = <
           item
             Expanded = False
-            FieldName = 'tipo'
+            FieldName = 'nome'
             Title.Alignment = taCenter
-            Title.Caption = 'Tipo do Pagamento'
+            Title.Caption = 'Nome'
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'NomeFunc'
+            FieldName = 'telefone'
             Title.Alignment = taCenter
-            Title.Caption = 'Nome do Funcionario'
-            Width = 338
+            Title.Caption = 'Telefone'
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'data_pag'
+            FieldName = 'dataPag'
             Title.Alignment = taCenter
             Title.Caption = 'Data de Pagamento'
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'valor'
+            FieldName = 'personalCliente'
             Title.Alignment = taCenter
-            Title.Caption = 'Valor'
+            Title.Caption = 'Personal'
             Visible = True
           end>
       end
@@ -260,13 +294,13 @@ object formPagFunc: TformPagFunc
     object pnlBottom: TPanel
       Left = 0
       Top = 391
-      Width = 891
+      Width = 1059
       Height = 50
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 3
       ExplicitTop = 390
-      ExplicitWidth = 887
+      ExplicitWidth = 1055
       object lblSave: TLabel
         AlignWithMargins = True
         Left = 10
@@ -288,7 +322,7 @@ object formPagFunc: TformPagFunc
       end
       object Panel6: TPanel
         AlignWithMargins = True
-        Left = 738
+        Left = 906
         Top = 3
         Width = 150
         Height = 44
@@ -305,7 +339,7 @@ object formPagFunc: TformPagFunc
         ParentFont = False
         TabOrder = 0
         Visible = False
-        ExplicitLeft = 734
+        ExplicitLeft = 902
         object btnSalvar: TSpeedButton
           Left = 0
           Top = 0
@@ -335,7 +369,7 @@ object formPagFunc: TformPagFunc
       end
       object Panel8: TPanel
         AlignWithMargins = True
-        Left = 545
+        Left = 713
         Top = 3
         Width = 150
         Height = 44
@@ -351,7 +385,7 @@ object formPagFunc: TformPagFunc
         ParentBackground = False
         ParentFont = False
         TabOrder = 1
-        ExplicitLeft = 541
+        ExplicitLeft = 709
         object btnEditar: TSpeedButton
           Left = 0
           Top = 0
@@ -381,7 +415,7 @@ object formPagFunc: TformPagFunc
       end
       object Panel10: TPanel
         AlignWithMargins = True
-        Left = 352
+        Left = 520
         Top = 3
         Width = 150
         Height = 44
@@ -398,7 +432,7 @@ object formPagFunc: TformPagFunc
         ParentFont = False
         TabOrder = 2
         Visible = False
-        ExplicitLeft = 348
+        ExplicitLeft = 516
         object btnCancelar: TSpeedButton
           Left = 0
           Top = 0

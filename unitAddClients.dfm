@@ -12,6 +12,7 @@ object formAddClients: TformAddClients
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnClose = FormClose
   OnShow = FormShow
   TextHeight = 15
   object pnlPrincipal: TPanel
@@ -24,7 +25,6 @@ object formAddClients: TformAddClients
     Color = 14077653
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 803
     object pnlTop: TPanel
       Left = 0
       Top = 0
@@ -33,7 +33,6 @@ object formAddClients: TformAddClients
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 0
-      ExplicitWidth = 803
       object imgIconForm: TImage
         Left = 0
         Top = 0
@@ -87,7 +86,6 @@ object formAddClients: TformAddClients
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitWidth = 803
       object lblSave: TLabel
         AlignWithMargins = True
         Left = 3
@@ -104,7 +102,7 @@ object formAddClients: TformAddClients
         Font.Style = [fsBold]
         ParentColor = False
         ParentFont = False
-        ExplicitWidth = 979
+        ExplicitWidth = 6
       end
       object pnlNome: TPanel
         Left = 30
@@ -246,7 +244,6 @@ object formAddClients: TformAddClients
           ParentFont = False
           TabOrder = 0
           MudarColor = 6006501
-          ExplicitWidth = 134
         end
       end
       object pnlRua: TPanel
@@ -423,7 +420,7 @@ object formAddClients: TformAddClients
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
-          ExplicitWidth = 113
+          ExplicitWidth = 35
         end
         object txtProbSaude: TSWHDBEdit
           Left = 0
@@ -528,7 +525,6 @@ object formAddClients: TformAddClients
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 2
-      ExplicitWidth = 803
       object Panel6: TPanel
         AlignWithMargins = True
         Left = 766
@@ -549,7 +545,6 @@ object formAddClients: TformAddClients
         ParentBackground = False
         ParentFont = False
         TabOrder = 0
-        ExplicitLeft = 583
         object btnEditar: TSpeedButton
           Left = 0
           Top = 0
@@ -597,7 +592,6 @@ object formAddClients: TformAddClients
         ParentBackground = False
         ParentFont = False
         TabOrder = 1
-        ExplicitLeft = 373
         object btnFechar: TSpeedButton
           Left = 0
           Top = 0
@@ -666,7 +660,6 @@ object formAddClients: TformAddClients
           ParentBackground = False
           TabOrder = 0
           Visible = False
-          ExplicitTop = 78
         end
       end
     end

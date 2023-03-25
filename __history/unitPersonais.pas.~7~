@@ -166,12 +166,8 @@ end;
 
 procedure TformPersonais.btnRemoveClientClick(Sender: TObject);
 begin
-    if DM.sqlPersonais.IsEmpty = True then begin
-      ShowMessage('A tabela j√° est√° vazia!')
-    end else
-    if Application.MessageBox('Deseja realmente Excluir esse Personal?','Aten√ß√£o',MB_ICONEXCLAMATION+MB_OKCANCEL) = mrOk then begin
+    if Application.MessageBox('Deseja realmente Excluir esse Personal?','AtenÁ„o',MB_ICONEXCLAMATION+MB_OKCANCEL) = mrOk then begin
     DM.sqlPersonais.Delete;
-    DM.sqlPagFunc.Refresh;
   end;
 end;
 
@@ -229,7 +225,7 @@ begin
     imgPersonal.Picture.LoadFromFile(DM.sqlPersonais.FieldByName('imagem').Value);
     lblNome.Caption := DM.sqlPersonais.FieldByName('nome').Value;
     lblIdade.Caption := DM.sqlPersonais.FieldByName('idade').Value;
-    lblTel.Caption := DM.sqlPersonais.FieldByName('telefone').Value;
+    lblTel.Caption := DM.sqlPersonais.FieldByName('nome').Value;
     DM.sqlQtdAlunos.SQL.Clear;
     DM.sqlQtdAlunos.SQL.Text := 'SELECT * FROM clientes WHERE id_personal = :pPersonal';
     DM.sqlQtdAlunos.ParamByName('pPersonal').Value := DM.sqlPersonais.FieldByName('id').Value;
@@ -248,7 +244,7 @@ begin
   end else
     gridPersonais.Canvas.Brush.Color := clWhite;
 
-  //mudando a cor da sele√ß√£o
+  //mudando a cor da seleÁ„o
   if (gdSelected in State) then
     begin
       gridPersonais.Canvas.Brush.Color := $005BA6E5;
@@ -259,7 +255,7 @@ begin
     gridPersonais.Canvas.FillRect(rect);
     gridPersonais.DefaultDrawColumnCell(Rect, DataCol, Column, State);
 
-  //mudando a posi√ß√£o e alinhamento vertical do texto de cadalinha
+  //mudando a posiÁ„o e alinhamento vertical do texto de cadalinha
   gridPersonais.Canvas.TextRect(Rect, rect.Left + 8, rect.Top + 8, Column.Field.DisplayText);
 end;
 

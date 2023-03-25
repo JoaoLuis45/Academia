@@ -26,10 +26,6 @@ type
     btnMenuPrincipal: TSpeedButton;
     Panel5: TPanel;
     Panel6: TPanel;
-    Panel7: TPanel;
-    btnPersonais: TSpeedButton;
-    Panel8: TPanel;
-    Panel9: TPanel;
     Panel10: TPanel;
     btnEcercicios: TSpeedButton;
     Panel11: TPanel;
@@ -48,6 +44,20 @@ type
     Panel20: TPanel;
     btnMatricularClientes: TSpeedButton;
     Panel22: TPanel;
+    pnlPersonaisExtends: TPanel;
+    Panel8: TPanel;
+    btnAddPersonal: TSpeedButton;
+    Panel9: TPanel;
+    pnlPaymentExtends: TPanel;
+    Panel19: TPanel;
+    btnReceberPagamento: TSpeedButton;
+    Panel21: TPanel;
+    Panel7: TPanel;
+    btnPagarFunc: TSpeedButton;
+    Panel23: TPanel;
+    Panel24: TPanel;
+    btnPagReal: TSpeedButton;
+    Panel25: TPanel;
     procedure btnCloseClick(Sender: TObject);
     procedure btnMinimizeClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
@@ -60,15 +70,12 @@ type
     procedure btnSairMouseLeave(Sender: TObject);
     procedure btnMenuPrincipalMouseEnter(Sender: TObject);
     procedure btnMenuPrincipalMouseLeave(Sender: TObject);
-    procedure btnPersonaisMouseEnter(Sender: TObject);
-    procedure btnPersonaisMouseLeave(Sender: TObject);
     procedure btnPagamentosMouseEnter(Sender: TObject);
     procedure btnPagamentosMouseLeave(Sender: TObject);
     procedure btnEcerciciosMouseEnter(Sender: TObject);
     procedure btnEcerciciosMouseLeave(Sender: TObject);
     procedure btnPagamentosClick(Sender: TObject);
     procedure btnEcerciciosClick(Sender: TObject);
-    procedure btnPersonaisClick(Sender: TObject);
     procedure btnMenuPrincipalClick(Sender: TObject);
     procedure btnClientesClick(Sender: TObject);
     procedure btnClientesMouseEnter(Sender: TObject);
@@ -77,6 +84,19 @@ type
     procedure btnMatricularClientesMouseLeave(Sender: TObject);
     procedure pnlFormsMouseEnter(Sender: TObject);
     procedure btnMatricularClientesClick(Sender: TObject);
+    procedure btnAddPersonalMouseEnter(Sender: TObject);
+    procedure btnAddPersonalMouseLeave(Sender: TObject);
+    procedure btnAddPersonalClick(Sender: TObject);
+    procedure btnPagarFuncMouseEnter(Sender: TObject);
+    procedure btnPagarFuncMouseLeave(Sender: TObject);
+    procedure btnReceberPagamentoMouseEnter(Sender: TObject);
+    procedure btnReceberPagamentoMouseLeave(Sender: TObject);
+    procedure btnReceberPagamentoClick(Sender: TObject);
+    procedure btnPagRealMouseEnter(Sender: TObject);
+    procedure btnPagRealMouseLeave(Sender: TObject);
+    procedure btnPagRealClick(Sender: TObject);
+    procedure btnPagarFuncClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -90,7 +110,9 @@ implementation
 
 {$R *.dfm}
 
-uses UnitDM, unitLogin, unitAddClients;
+uses UnitDM, unitLogin, unitAddClients, uFuncoes, unitaddPersonais,
+  unitPersonais, unitPagamentos, unitReceberPagamentos, unitPagFunc,
+  unitRealPag;
 
 
 
@@ -102,8 +124,11 @@ begin
 end;
 
 procedure TformHome.btnMinimizeClick(Sender: TObject);
+var
+  hPrWindow: HWND;
 begin
-  Application.Minimize;
+  hPrWindow := formHome.WindowHandle;
+  SendMessage(hPrWindow, WM_SYSCOMMAND, SC_MINIMIZE, 0);
 end;
 
 procedure TformHome.EscondeBorda;
@@ -117,6 +142,8 @@ end;
 procedure TformHome.EscondeSubMenus;
 begin
   pnlClientsExtends.Visible := False;
+  pnlPersonaisExtends.Visible := False;
+  pnlPaymentExtends.Visible := False;
 end;
 
 procedure TformHome.ExpandeMenu;
@@ -133,6 +160,12 @@ begin
 end;
 
 
+
+procedure TformHome.FormCreate(Sender: TObject);
+begin
+    formLogin:= TformLogin.Create(self);
+    formLogin.ShowModal;
+end;
 
 procedure TformHome.MostraSubMenu(pnl: TPanel);
 begin
@@ -193,6 +226,9 @@ end;
 
 procedure TformHome.btnMatricularClientesClick(Sender: TObject);
 begin
+    MudaFonteCor(btnMatricularClientes);
+    EscondeBorda(panel22);
+    formClientes.Close;
     formAddClients:= TformAddClients.Create(self);
     formAddClients.Parent := pnlForms;
     formAddClients.Align := alClient;
@@ -214,6 +250,7 @@ procedure TformHome.btnMatricularClientesMouseLeave(Sender: TObject);
 begin
   MudaFonteCor(btnMatricularClientes);
   EscondeBorda(panel22);
+  EscondeSubMenus;
 end;
 
 procedure TformHome.btnMenuPrincipalClick(Sender: TObject);
@@ -236,31 +273,22 @@ begin
   EscondeBorda(panel6)
 end;
 
-procedure TformHome.btnPersonaisClick(Sender: TObject);
-begin
-  ExpandeMenu;
-  MudaFonteCor(btnPersonais);
-  EscondeBorda(panel9)
-end;
-
-procedure TformHome.btnPersonaisMouseEnter(Sender: TObject);
-begin
-  MudaFonteCor(btnPersonais);
-  EscondeBorda(panel9);
-  EscondeSubMenus;
-end;
-
-procedure TformHome.btnPersonaisMouseLeave(Sender: TObject);
-begin
-  MudaFonteCor(btnPersonais);
-  EscondeBorda(panel9)
-end;
 
 procedure TformHome.btnEcerciciosClick(Sender: TObject);
 begin
   ExpandeMenu;
   MudaFonteCor(btnEcercicios);
-  EscondeBorda(panel12)
+  EscondeBorda(panel12);
+  if pnlMenu.Width = 170 then begin
+    exit
+  end else begin
+    formPersonais:= TformPersonais.Create(self);
+    formPersonais.Parent := pnlForms;
+    formPersonais.Align := alClient;
+    formPersonais.BorderStyle := bsNone;
+    formPersonais.Show;
+  end;
+  EscondeSubMenus;
 end;
 
 procedure TformHome.btnEcerciciosMouseEnter(Sender: TObject);
@@ -268,6 +296,7 @@ begin
   MudaFonteCor(btnEcercicios);
   EscondeBorda(panel12);
   EscondeSubMenus;
+  MostraSubMenu(pnlPersonaisExtends);
 end;
 
 procedure TformHome.btnEcerciciosMouseLeave(Sender: TObject);
@@ -281,6 +310,16 @@ begin
   ExpandeMenu;
   MudaFonteCor(btnPagamentos);
   EscondeBorda(panel15);
+    if pnlMenu.Width = 170 then begin
+    exit
+  end else begin
+    formPagamentos:= TformPagamentos.Create(self);
+    formPagamentos.Parent := pnlForms;
+    formPagamentos.Align := alClient;
+    formPagamentos.BorderStyle := bsNone;
+    formPagamentos.Show;
+  end;
+  EscondeSubMenus;
 end;
 
 procedure TformHome.btnPagamentosMouseEnter(Sender: TObject);
@@ -288,12 +327,118 @@ begin
   MudaFonteCor(btnPagamentos);
   EscondeBorda(panel15);
   EscondeSubMenus;
+  MostraSubMenu(pnlPaymentExtends);
 end;
 
 procedure TformHome.btnPagamentosMouseLeave(Sender: TObject);
 begin
   MudaFonteCor(btnPagamentos);
   EscondeBorda(panel15)
+end;
+
+procedure TformHome.btnPagarFuncClick(Sender: TObject);
+begin
+  MudaFonteCor(btnPagarFunc);
+  EscondeBorda(panel23);
+  formRealPag:= TformRealPag.Create(self);
+  formRealPag.Parent := formHome.pnlForms;
+  formRealPag.Align := alClient;
+  formRealPag.BorderStyle := bsNone;
+  formRealPag.Show;
+  EscondeSubMenus;
+  ExpandeMenu;
+end;
+
+procedure TformHome.btnPagarFuncMouseEnter(Sender: TObject);
+begin
+  MudaFonteCor(btnPagarFunc);
+  EscondeBorda(panel23);
+end;
+
+procedure TformHome.btnPagarFuncMouseLeave(Sender: TObject);
+begin
+  MudaFonteCor(btnPagarFunc);
+  EscondeBorda(panel23);
+end;
+
+procedure TformHome.btnPagRealClick(Sender: TObject);
+begin
+  MudaFonteCor(btnPagReal);
+  EscondeBorda(panel25);
+    formPagFunc:= TformPagFunc.Create(self);
+    formPagFunc.Parent := pnlForms;
+    formPagFunc.Align := alClient;
+    formPagFunc.BorderStyle := bsNone;
+    formPagFunc.Show;
+    EscondeSubMenus;
+    ExpandeMenu;
+end;
+
+procedure TformHome.btnPagRealMouseEnter(Sender: TObject);
+begin
+  MudaFonteCor(btnPagReal);
+  EscondeBorda(panel25);
+end;
+
+procedure TformHome.btnPagRealMouseLeave(Sender: TObject);
+begin
+  MudaFonteCor(btnPagReal);
+  EscondeBorda(panel25);
+
+end;
+
+procedure TformHome.btnReceberPagamentoClick(Sender: TObject);
+begin
+  MudaFonteCor(btnReceberPagamento);
+  EscondeBorda(panel21);
+    formReceberPagamento:= TformReceberPagamento.Create(self);
+    formReceberPagamento.Parent := pnlForms;
+    formReceberPagamento.Align := alClient;
+    formReceberPagamento.BorderStyle := bsNone;
+    formReceberPagamento.Show;
+    EscondeSubMenus;
+    ExpandeMenu;
+end;
+
+procedure TformHome.btnReceberPagamentoMouseEnter(Sender: TObject);
+begin
+  MudaFonteCor(btnReceberPagamento);
+  EscondeBorda(panel21);
+end;
+
+procedure TformHome.btnReceberPagamentoMouseLeave(Sender: TObject);
+begin
+  MudaFonteCor(btnReceberPagamento);
+  EscondeBorda(panel21);
+end;
+
+procedure TformHome.btnAddPersonalClick(Sender: TObject);
+begin
+    MudaFonteCor(btnAddPersonal);
+    EscondeBorda(panel9);
+    formPersonais.Close;
+    formAddPersonal:= TformAddPersonal.Create(self);
+    formAddPersonal.Parent := pnlForms;
+    formAddPersonal.Align := alClient;
+    formAddPersonal.BorderStyle := bsNone;
+    formAddPersonal.Show;
+    EscondeSubMenus;
+    ExpandeMenu;
+    DM.sqlPersonais.Open();
+    dm.sqlPersonais.Insert;
+end;
+
+procedure TformHome.btnAddPersonalMouseEnter(Sender: TObject);
+begin
+  MudaFonteCor(btnAddPersonal);
+  EscondeBorda(panel9);
+end;
+
+procedure TformHome.btnAddPersonalMouseLeave(Sender: TObject);
+begin
+  MudaFonteCor(btnAddPersonal);
+  EscondeBorda(panel9);
+  EscondeSubMenus;
 end;
 
 procedure TformHome.btnClientesClick(Sender: TObject);

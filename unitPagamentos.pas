@@ -95,6 +95,7 @@ end;
 
 procedure TformPagamentos.btnCancelarClick(Sender: TObject);
 begin
+      DM.sqlPagamentos.Cancel;
       DM.sqlPagamentos.Refresh;
       formPagamentos.Close;
       formPagamentos:= TformPagamentos.Create(self);
@@ -164,11 +165,15 @@ end;
 
 procedure TformPagamentos.btnReceberPagamentoClick(Sender: TObject);
 begin
+    if DM.sqlClientes.IsEmpty = True then begin
+      ShowMessage('Não existem clientes cadastrados!')
+    end else begin
     formReceberPagamento:= TformReceberPagamento.Create(self);
     formReceberPagamento.Parent := formHome.pnlForms;
     formReceberPagamento.Align := alClient;
     formReceberPagamento.BorderStyle := bsNone;
     formReceberPagamento.Show;
+    end;
 end;
 
 procedure TformPagamentos.btnReceberPagamentoMouseEnter(Sender: TObject);

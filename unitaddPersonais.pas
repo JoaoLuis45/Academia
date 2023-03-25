@@ -52,6 +52,7 @@ type
     procedure btnVoltarMouseEnter(Sender: TObject);
     procedure btnVoltarMouseLeave(Sender: TObject);
     procedure btnVoltarClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -194,6 +195,11 @@ end;
 procedure TformAddPersonal.btnVoltarMouseLeave(Sender: TObject);
 begin
 AoSair(panel12,panel13)
+end;
+
+procedure TformAddPersonal.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  DM.sqlPersonais.Cancel;
 end;
 
 procedure TformAddPersonal.FormShow(Sender: TObject);

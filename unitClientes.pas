@@ -124,6 +124,7 @@ end;
 
 procedure TformClientes.btnCancelarClick(Sender: TObject);
 begin
+      DM.sqlClientes.Cancel;
       DM.sqlClientes.Refresh;
       formClientes.Close;
       formClientes:= TformClientes.Create(self);
@@ -169,6 +170,7 @@ begin
   end else
   if Application.MessageBox('Deseja realmente Excluir esse cliente?','Atenção',MB_ICONEXCLAMATION+MB_OKCANCEL) = mrOk then begin
     DM.sqlClientes.Delete;
+    DM.sqlPagamentos.Refresh;
   end;
 end;
 

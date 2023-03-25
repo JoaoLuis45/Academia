@@ -58,6 +58,7 @@ type
     Panel24: TPanel;
     btnPagReal: TSpeedButton;
     Panel25: TPanel;
+    imgWelcome: TImage;
     procedure btnCloseClick(Sender: TObject);
     procedure btnMinimizeClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
@@ -97,6 +98,10 @@ type
     procedure btnPagRealClick(Sender: TObject);
     procedure btnPagarFuncClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FechaTudo();
+    procedure FormResize(Sender: TObject);
+    procedure imgWelcomeMouseEnter(Sender: TObject);
+    procedure pnlMenuMouseEnter(Sender: TObject);
   private
     { Private declarations }
   public
@@ -124,11 +129,13 @@ begin
 end;
 
 procedure TformHome.btnMinimizeClick(Sender: TObject);
-var
-  hPrWindow: HWND;
 begin
-  hPrWindow := formHome.WindowHandle;
-  SendMessage(hPrWindow, WM_SYSCOMMAND, SC_MINIMIZE, 0);
+if formHome.WindowState = TWindowState.wsMaximized then begin
+  formHome.WindowState := TWindowState.wsMinimized;
+end else begin
+  formHome.WindowState := TWindowState.wsMaximized;
+  formHome.BorderStyle := bsNone;
+end;
 end;
 
 procedure TformHome.EscondeBorda;
@@ -161,10 +168,36 @@ end;
 
 
 
+procedure TformHome.FechaTudo;
+begin
+    formAddClients.Close;
+    formAddPersonal.Close;
+    formPagamentos.Close;
+    formPagFunc.Close;
+    formPersonais.Close;
+    formRealPag.Close;
+    formReceberPagamento.Close;
+    formClientes.Close;
+end;
+
 procedure TformHome.FormCreate(Sender: TObject);
 begin
     formLogin:= TformLogin.Create(self);
     formLogin.ShowModal;
+end;
+
+procedure TformHome.FormResize(Sender: TObject);
+begin
+  if formHome.WindowState = TWindowState.wsNormal then begin
+    formHome.BorderStyle := bsSingle;
+    formHome.BorderIcons := [];
+
+  end;
+end;
+
+procedure TformHome.imgWelcomeMouseEnter(Sender: TObject);
+begin
+EscondeSubMenus;
 end;
 
 procedure TformHome.MostraSubMenu(pnl: TPanel);
@@ -195,6 +228,11 @@ begin
 procedure TformHome.pnlFormsMouseEnter(Sender: TObject);
 begin
   EscondeSubMenus;
+end;
+
+procedure TformHome.pnlMenuMouseEnter(Sender: TObject);
+begin
+EscondeSubMenus;
 end;
 
 procedure TformHome.btnSairClick(Sender: TObject);
@@ -257,7 +295,12 @@ procedure TformHome.btnMenuPrincipalClick(Sender: TObject);
 begin
   ExpandeMenu;
   MudaFonteCor(btnMenuPrincipal);
-  EscondeBorda(panel6)
+  EscondeBorda(panel6);
+    if pnlMenu.Width = 170 then begin
+    exit
+  end else begin
+    FechaTudo;
+  end;
 end;
 
 procedure TformHome.btnMenuPrincipalMouseEnter(Sender: TObject);
@@ -282,6 +325,8 @@ begin
   if pnlMenu.Width = 170 then begin
     exit
   end else begin
+      formAddClients.Close;
+    formAddPersonal.Close;
     formPersonais:= TformPersonais.Create(self);
     formPersonais.Parent := pnlForms;
     formPersonais.Align := alClient;
@@ -313,6 +358,8 @@ begin
     if pnlMenu.Width = 170 then begin
     exit
   end else begin
+      formAddClients.Close;
+    formAddPersonal.Close;
     formPagamentos:= TformPagamentos.Create(self);
     formPagamentos.Parent := pnlForms;
     formPagamentos.Align := alClient;
@@ -340,6 +387,11 @@ procedure TformHome.btnPagarFuncClick(Sender: TObject);
 begin
   MudaFonteCor(btnPagarFunc);
   EscondeBorda(panel23);
+    if DM.sqlPersonais.IsEmpty = True then begin
+      ShowMessage('Não existem funcionários cadastrados!')
+    end else begin
+        formAddClients.Close;
+    formAddPersonal.Close;
   formRealPag:= TformRealPag.Create(self);
   formRealPag.Parent := formHome.pnlForms;
   formRealPag.Align := alClient;
@@ -347,6 +399,7 @@ begin
   formRealPag.Show;
   EscondeSubMenus;
   ExpandeMenu;
+    end;
 end;
 
 procedure TformHome.btnPagarFuncMouseEnter(Sender: TObject);
@@ -363,6 +416,8 @@ end;
 
 procedure TformHome.btnPagRealClick(Sender: TObject);
 begin
+    formAddClients.Close;
+    formAddPersonal.Close;
   MudaFonteCor(btnPagReal);
   EscondeBorda(panel25);
     formPagFunc:= TformPagFunc.Create(self);
@@ -391,6 +446,11 @@ procedure TformHome.btnReceberPagamentoClick(Sender: TObject);
 begin
   MudaFonteCor(btnReceberPagamento);
   EscondeBorda(panel21);
+    if DM.sqlClientes.IsEmpty = True then begin
+      ShowMessage('Não existem clientes cadastrados!')
+    end else begin
+        formAddClients.Close;
+    formAddPersonal.Close;
     formReceberPagamento:= TformReceberPagamento.Create(self);
     formReceberPagamento.Parent := pnlForms;
     formReceberPagamento.Align := alClient;
@@ -398,6 +458,7 @@ begin
     formReceberPagamento.Show;
     EscondeSubMenus;
     ExpandeMenu;
+    end;
 end;
 
 procedure TformHome.btnReceberPagamentoMouseEnter(Sender: TObject);
@@ -449,6 +510,8 @@ begin
   if pnlMenu.Width = 170 then begin
     exit
   end else begin
+    formAddClients.Close;
+    formAddPersonal.Close;
     formClientes:= TformClientes.Create(self);
     formClientes.Parent := pnlForms;
     formClientes.Align := alClient;

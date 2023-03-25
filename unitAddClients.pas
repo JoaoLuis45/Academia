@@ -67,6 +67,7 @@ type
     procedure btnVoltarMouseEnter(Sender: TObject);
     procedure btnVoltarMouseLeave(Sender: TObject);
     procedure btnVoltarClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -214,6 +215,11 @@ begin
 end;
 end;
 
+
+procedure TformAddClients.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  DM.sqlClientes.Cancel;
+end;
 
 procedure TformAddClients.FormShow(Sender: TObject);
 begin

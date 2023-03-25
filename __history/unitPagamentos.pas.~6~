@@ -95,7 +95,6 @@ end;
 
 procedure TformPagamentos.btnCancelarClick(Sender: TObject);
 begin
-      DM.sqlPagamentos.Cancel;
       DM.sqlPagamentos.Refresh;
       formPagamentos.Close;
       formPagamentos:= TformPagamentos.Create(self);
@@ -118,7 +117,7 @@ end;
 procedure TformPagamentos.btnEditarClick(Sender: TObject);
 begin
   if DM.sqlPagamentos.IsEmpty then begin
-    ShowMessage('A tabela est√° vazia!');
+    ShowMessage('A tabela est· vazia!');
   end else begin
     DM.sqlPagamentos.Close;
     DM.sqlPagamentos.Open();
@@ -146,9 +145,9 @@ end;
 procedure TformPagamentos.btnExcluirPagamentoClick(Sender: TObject);
 begin
   if DM.sqlPagamentos.IsEmpty then begin
-    ShowMessage('A tabela j√° est√° vazia!');
+    ShowMessage('A tabela j· est· vazia!');
   end else
-  if Application.MessageBox('Deseja realmente Excluir esse Pagamento?','Aten√ß√£o',MB_ICONEXCLAMATION+MB_OKCANCEL) = mrOk then begin
+  if Application.MessageBox('Deseja realmente Excluir esse Pagamento?','AtenÁ„o',MB_ICONEXCLAMATION+MB_OKCANCEL) = mrOk then begin
     DM.sqlPagamentos.Delete;
   end;
 end;
@@ -165,15 +164,11 @@ end;
 
 procedure TformPagamentos.btnReceberPagamentoClick(Sender: TObject);
 begin
-    if DM.sqlClientes.IsEmpty = True then begin
-      ShowMessage('N√£o existem clientes cadastrados!')
-    end else begin
     formReceberPagamento:= TformReceberPagamento.Create(self);
     formReceberPagamento.Parent := formHome.pnlForms;
     formReceberPagamento.Align := alClient;
     formReceberPagamento.BorderStyle := bsNone;
     formReceberPagamento.Show;
-    end;
 end;
 
 procedure TformPagamentos.btnReceberPagamentoMouseEnter(Sender: TObject);
@@ -277,7 +272,7 @@ begin
   end else
     gridPagamentos.Canvas.Brush.Color := clWhite;
 
-  //mudando a cor da sele√ß√£o
+  //mudando a cor da seleÁ„o
   if (gdSelected in State) then
     begin
       gridPagamentos.Canvas.Brush.Color := $005BA6E5;
@@ -288,7 +283,7 @@ begin
     gridPagamentos.Canvas.FillRect(rect);
     gridPagamentos.DefaultDrawColumnCell(Rect, DataCol, Column, State);
 
-  //mudando a posi√ß√£o e alinhamento vertical do texto de cadalinha
+  //mudando a posiÁ„o e alinhamento vertical do texto de cadalinha
   gridPagamentos.Canvas.TextRect(Rect, rect.Left + 8, rect.Top + 8, Column.Field.DisplayText);
 end;
 

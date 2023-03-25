@@ -124,7 +124,6 @@ end;
 
 procedure TformClientes.btnCancelarClick(Sender: TObject);
 begin
-      DM.sqlClientes.Cancel;
       DM.sqlClientes.Refresh;
       formClientes.Close;
       formClientes:= TformClientes.Create(self);
@@ -166,11 +165,10 @@ end;
 procedure TformClientes.btnRemoveClientClick(Sender: TObject);
 begin
   if DM.sqlClientes.IsEmpty then begin
-    ShowMessage('A tabela j√° est√° vazia!');
+    ShowMessage('A tabela j· est· vazia!');
   end else
-  if Application.MessageBox('Deseja realmente Excluir esse cliente?','Aten√ß√£o',MB_ICONEXCLAMATION+MB_OKCANCEL) = mrOk then begin
+  if Application.MessageBox('Deseja realmente Excluir esse cliente?','AtenÁ„o',MB_ICONEXCLAMATION+MB_OKCANCEL) = mrOk then begin
     DM.sqlClientes.Delete;
-    DM.sqlPagamentos.Refresh;
   end;
 end;
 
@@ -230,7 +228,7 @@ begin
   end else
     gridClients.Canvas.Brush.Color := clWhite;
 
-  //mudando a cor da sele√ß√£o
+  //mudando a cor da seleÁ„o
   if (gdSelected in State) then
     begin
       gridClients.Canvas.Brush.Color := $005BA6E5;
@@ -241,14 +239,14 @@ begin
     gridClients.Canvas.FillRect(rect);
     gridClients.DefaultDrawColumnCell(Rect, DataCol, Column, State);
 
-  //mudando a posi√ß√£o e alinhamento vertical do texto de cadalinha
+  //mudando a posiÁ„o e alinhamento vertical do texto de cadalinha
   gridClients.Canvas.TextRect(Rect, rect.Left + 8, rect.Top + 8, Column.Field.DisplayText);
 end;
 
 procedure TformClientes.btnEditarClick(Sender: TObject);
 begin
     if DM.sqlPagamentos.IsEmpty then begin
-    ShowMessage('A tabela est√° vazia!');
+    ShowMessage('A tabela est· vazia!');
   end else begin
     DM.sqlClientes.Close;
     DM.sqlClientes.Open();

@@ -12,6 +12,7 @@ object formAddPersonal: TformAddPersonal
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnClose = FormClose
   OnShow = FormShow
   TextHeight = 15
   object pnlPrincipal: TPanel
@@ -442,7 +443,6 @@ object formAddPersonal: TformAddPersonal
           ParentBackground = False
           TabOrder = 0
           Visible = False
-          ExplicitTop = 78
         end
       end
     end

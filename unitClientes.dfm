@@ -25,15 +25,17 @@ object formClientes: TformClientes
     Color = 14077653
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1051
+    ExplicitHeight = 439
     object pnlTop: TPanel
       Left = 0
       Top = 0
-      Width = 1059
+      Width = 1055
       Height = 57
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 0
-      ExplicitWidth = 1055
+      ExplicitWidth = 1051
       object imgIconForm: TImage
         Left = 0
         Top = 0
@@ -82,12 +84,12 @@ object formClientes: TformClientes
     object pnlButtons: TPanel
       Left = 0
       Top = 57
-      Width = 1059
+      Width = 1055
       Height = 80
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitWidth = 1055
+      ExplicitWidth = 1051
       object panel1: TPanel
         AlignWithMargins = True
         Left = 810
@@ -113,7 +115,7 @@ object formClientes: TformClientes
           Width = 200
           Height = 71
           Align = alClient
-          Caption = 'Pagamentos Realizados'
+          Caption = 'Pagamentos Recebidos'
           Flat = True
           OnClick = btnPaymentClick
           OnMouseEnter = btnPaymentMouseEnter
@@ -226,18 +228,18 @@ object formClientes: TformClientes
     object pnlGrid: TPanel
       Left = 0
       Top = 137
-      Width = 1059
-      Height = 254
+      Width = 1055
+      Height = 253
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 2
-      ExplicitWidth = 1055
-      ExplicitHeight = 253
+      ExplicitWidth = 1051
+      ExplicitHeight = 252
       object gridClients: TDBGrid
         Left = 0
         Top = 0
-        Width = 1059
-        Height = 254
+        Width = 1055
+        Height = 253
         Align = alClient
         BiDiMode = bdLeftToRight
         BorderStyle = bsNone
@@ -293,14 +295,14 @@ object formClientes: TformClientes
     end
     object pnlBottom: TPanel
       Left = 0
-      Top = 391
-      Width = 1059
+      Top = 390
+      Width = 1055
       Height = 50
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 3
-      ExplicitTop = 390
-      ExplicitWidth = 1055
+      ExplicitTop = 389
+      ExplicitWidth = 1051
       object lblSave: TLabel
         AlignWithMargins = True
         Left = 10
@@ -322,7 +324,7 @@ object formClientes: TformClientes
       end
       object Panel6: TPanel
         AlignWithMargins = True
-        Left = 906
+        Left = 902
         Top = 3
         Width = 150
         Height = 44
@@ -339,7 +341,7 @@ object formClientes: TformClientes
         ParentFont = False
         TabOrder = 0
         Visible = False
-        ExplicitLeft = 902
+        ExplicitLeft = 898
         object btnSalvar: TSpeedButton
           Left = 0
           Top = 0
@@ -369,7 +371,7 @@ object formClientes: TformClientes
       end
       object Panel8: TPanel
         AlignWithMargins = True
-        Left = 713
+        Left = 709
         Top = 3
         Width = 150
         Height = 44
@@ -385,7 +387,7 @@ object formClientes: TformClientes
         ParentBackground = False
         ParentFont = False
         TabOrder = 1
-        ExplicitLeft = 709
+        ExplicitLeft = 705
         object btnEditar: TSpeedButton
           Left = 0
           Top = 0
@@ -415,7 +417,7 @@ object formClientes: TformClientes
       end
       object Panel10: TPanel
         AlignWithMargins = True
-        Left = 520
+        Left = 516
         Top = 3
         Width = 150
         Height = 44
@@ -432,7 +434,7 @@ object formClientes: TformClientes
         ParentFont = False
         TabOrder = 2
         Visible = False
-        ExplicitLeft = 516
+        ExplicitLeft = 512
         object btnCancelar: TSpeedButton
           Left = 0
           Top = 0

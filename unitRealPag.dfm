@@ -3,8 +3,8 @@ object formRealPag: TformRealPag
   Top = 0
   BorderStyle = bsSingle
   Caption = 'formRealPag'
-  ClientHeight = 493
-  ClientWidth = 776
+  ClientHeight = 492
+  ClientWidth = 772
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,8 +17,8 @@ object formRealPag: TformRealPag
   object pnlPrincipal: TPanel
     Left = 0
     Top = 0
-    Width = 776
-    Height = 493
+    Width = 772
+    Height = 492
     Align = alClient
     BevelOuter = bvNone
     Color = 14077653
@@ -27,12 +27,12 @@ object formRealPag: TformRealPag
     object pnlTop: TPanel
       Left = 0
       Top = 0
-      Width = 780
+      Width = 776
       Height = 57
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 0
-      ExplicitWidth = 776
+      ExplicitWidth = 772
       object imgIconForm: TImage
         Left = 0
         Top = 0
@@ -87,13 +87,13 @@ object formRealPag: TformRealPag
     object pnlButtons: TPanel
       Left = 0
       Top = 57
-      Width = 780
-      Height = 387
+      Width = 776
+      Height = 386
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitWidth = 776
-      ExplicitHeight = 386
+      ExplicitWidth = 772
+      ExplicitHeight = 385
       object pnlFormasDePagamento: TPanel
         Left = 200
         Top = 126
@@ -804,17 +804,17 @@ object formRealPag: TformRealPag
     end
     object pnlBottom: TPanel
       Left = 0
-      Top = 444
-      Width = 780
+      Top = 443
+      Width = 776
       Height = 50
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 2
-      ExplicitTop = 443
-      ExplicitWidth = 776
+      ExplicitTop = 442
+      ExplicitWidth = 772
       object Panel10: TPanel
         AlignWithMargins = True
-        Left = 627
+        Left = 623
         Top = 3
         Width = 150
         Height = 44
@@ -830,7 +830,7 @@ object formRealPag: TformRealPag
         ParentBackground = False
         ParentFont = False
         TabOrder = 0
-        ExplicitLeft = 623
+        ExplicitLeft = 619
         object btnFechar: TSpeedButton
           Left = 0
           Top = 0

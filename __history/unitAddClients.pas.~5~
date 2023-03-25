@@ -67,7 +67,6 @@ type
     procedure btnVoltarMouseEnter(Sender: TObject);
     procedure btnVoltarMouseLeave(Sender: TObject);
     procedure btnVoltarClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -90,7 +89,7 @@ begin
   end else begin
 
      if (checkSaude.Checked = True) and (txtProbSaude.Text = '') then begin
-        ShowMessage('Especifique o problema fÃ­sico ou de saÃºde!');
+        ShowMessage('Especifique o problema físico ou de saúde!');
         exit
      end;
 
@@ -215,11 +214,6 @@ begin
 end;
 end;
 
-
-procedure TformAddClients.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  DM.sqlClientes.Cancel;
-end;
 
 procedure TformAddClients.FormShow(Sender: TObject);
 begin

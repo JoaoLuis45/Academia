@@ -166,8 +166,12 @@ end;
 
 procedure TformPersonais.btnRemoveClientClick(Sender: TObject);
 begin
+    if DM.sqlPersonais.IsEmpty = True then begin
+      ShowMessage('A tabela já está vazia!')
+    end else
     if Application.MessageBox('Deseja realmente Excluir esse Personal?','Atenção',MB_ICONEXCLAMATION+MB_OKCANCEL) = mrOk then begin
     DM.sqlPersonais.Delete;
+    DM.sqlPagFunc.Refresh;
   end;
 end;
 
@@ -225,7 +229,7 @@ begin
     imgPersonal.Picture.LoadFromFile(DM.sqlPersonais.FieldByName('imagem').Value);
     lblNome.Caption := DM.sqlPersonais.FieldByName('nome').Value;
     lblIdade.Caption := DM.sqlPersonais.FieldByName('idade').Value;
-    lblTel.Caption := DM.sqlPersonais.FieldByName('nome').Value;
+    lblTel.Caption := DM.sqlPersonais.FieldByName('telefone').Value;
     DM.sqlQtdAlunos.SQL.Clear;
     DM.sqlQtdAlunos.SQL.Text := 'SELECT * FROM clientes WHERE id_personal = :pPersonal';
     DM.sqlQtdAlunos.ParamByName('pPersonal').Value := DM.sqlPersonais.FieldByName('id').Value;

@@ -26,15 +26,17 @@ object formPagFunc: TformPagFunc
     Color = 14077653
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 887
+    ExplicitHeight = 440
     object pnlTop: TPanel
       Left = 0
       Top = 0
-      Width = 895
+      Width = 891
       Height = 57
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 0
-      ExplicitWidth = 891
+      ExplicitWidth = 887
       object imgIconForm: TImage
         Left = 0
         Top = 0
@@ -89,12 +91,12 @@ object formPagFunc: TformPagFunc
     object pnlButtons: TPanel
       Left = 0
       Top = 57
-      Width = 895
+      Width = 891
       Height = 80
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitWidth = 891
+      ExplicitWidth = 887
       object Panel2: TPanel
         AlignWithMargins = True
         Left = 530
@@ -189,18 +191,18 @@ object formPagFunc: TformPagFunc
     object pnlGrid: TPanel
       Left = 0
       Top = 137
-      Width = 895
-      Height = 255
+      Width = 891
+      Height = 254
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 2
-      ExplicitWidth = 891
-      ExplicitHeight = 254
+      ExplicitWidth = 887
+      ExplicitHeight = 253
       object gridPagFunc: TDBGrid
         Left = 0
         Top = 0
-        Width = 895
-        Height = 255
+        Width = 891
+        Height = 254
         Align = alClient
         BiDiMode = bdLeftToRight
         BorderStyle = bsNone
@@ -213,7 +215,7 @@ object formPagFunc: TformPagFunc
         Font.Height = -12
         Font.Name = 'Segoe UI'
         Font.Style = [fsBold]
-        Options = [dgTitles, dgColLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+        Options = [dgTitles, dgColLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgTitleClick, dgTitleHotTrack]
         ParentBiDiMode = False
         ParentFont = False
         TabOrder = 0
@@ -257,14 +259,14 @@ object formPagFunc: TformPagFunc
     end
     object pnlBottom: TPanel
       Left = 0
-      Top = 392
-      Width = 895
+      Top = 391
+      Width = 891
       Height = 50
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 3
-      ExplicitTop = 391
-      ExplicitWidth = 891
+      ExplicitTop = 390
+      ExplicitWidth = 887
       object lblSave: TLabel
         AlignWithMargins = True
         Left = 10
@@ -286,7 +288,7 @@ object formPagFunc: TformPagFunc
       end
       object Panel6: TPanel
         AlignWithMargins = True
-        Left = 742
+        Left = 738
         Top = 3
         Width = 150
         Height = 44
@@ -303,7 +305,7 @@ object formPagFunc: TformPagFunc
         ParentFont = False
         TabOrder = 0
         Visible = False
-        ExplicitLeft = 738
+        ExplicitLeft = 734
         object btnSalvar: TSpeedButton
           Left = 0
           Top = 0
@@ -333,7 +335,7 @@ object formPagFunc: TformPagFunc
       end
       object Panel8: TPanel
         AlignWithMargins = True
-        Left = 549
+        Left = 545
         Top = 3
         Width = 150
         Height = 44
@@ -349,7 +351,7 @@ object formPagFunc: TformPagFunc
         ParentBackground = False
         ParentFont = False
         TabOrder = 1
-        ExplicitLeft = 545
+        ExplicitLeft = 541
         object btnEditar: TSpeedButton
           Left = 0
           Top = 0
@@ -379,7 +381,7 @@ object formPagFunc: TformPagFunc
       end
       object Panel10: TPanel
         AlignWithMargins = True
-        Left = 356
+        Left = 352
         Top = 3
         Width = 150
         Height = 44
@@ -396,7 +398,7 @@ object formPagFunc: TformPagFunc
         ParentFont = False
         TabOrder = 2
         Visible = False
-        ExplicitLeft = 352
+        ExplicitLeft = 348
         object btnCancelar: TSpeedButton
           Left = 0
           Top = 0

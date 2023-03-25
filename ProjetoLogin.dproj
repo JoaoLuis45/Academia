@@ -97,6 +97,9 @@
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
+        <Icon_MainIcon>512534_exercise_fitness_gym_gymnasium_icon-_2_.ico</Icon_MainIcon>
+        <UWP_DelphiLogo44>..\..\..\..\Downloads\512534_exercise_fitness_gym_gymnasium_icon (2).png</UWP_DelphiLogo44>
+        <UWP_DelphiLogo150>..\..\..\..\Downloads\512534_exercise_fitness_gym_gymnasium_icon (1).png</UWP_DelphiLogo150>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -163,6 +166,20 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="4">
+                <DeployFile LocalName="..\..\..\..\Downloads\512534_exercise_fitness_gym_gymnasium_icon (1).png" Configuration="Release" Class="UWP_DelphiLogo150">
+                    <Platform Name="Win32">
+                        <RemoteDir>Assets\</RemoteDir>
+                        <RemoteName>Logo150x150.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\Downloads\512534_exercise_fitness_gym_gymnasium_icon (2).png" Configuration="Release" Class="UWP_DelphiLogo44">
+                    <Platform Name="Win32">
+                        <RemoteDir>Assets\</RemoteDir>
+                        <RemoteName>Logo44x44.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Win32\Debug\ProjetoLogin.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>ProjetoLogin.exe</RemoteName>
